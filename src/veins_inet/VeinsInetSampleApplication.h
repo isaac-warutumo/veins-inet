@@ -26,9 +26,13 @@
 
 #include "veins_inet/VeinsInetApplicationBase.h"
 
-class VEINS_INET_API VeinsInetSampleApplication : public veins::VeinsInetApplicationBase {
+class VEINS_INET_API VeinsInetSampleApplication: public veins::VeinsInetApplicationBase {
 protected:
     bool haveForwarded = false;
+
+    static int numCars; // Counter for the number of initialized cars
+    static int maliciousCarId; // Malicious car ID
+    static bool isMaliciousAssigned; // Flag for malicious car assignment
 
 protected:
     virtual bool startApplication() override;

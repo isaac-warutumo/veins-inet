@@ -36,12 +36,16 @@ using namespace inet;
 
 Define_Module(VeinsInetSampleApplication);
 
-VeinsInetSampleApplication::VeinsInetSampleApplication()
-{
+int VeinsInetSampleApplication::numCars = 0;
+int VeinsInetSampleApplication::maliciousCarId = -1;
+bool VeinsInetSampleApplication::isMaliciousAssigned = false;
+
+VeinsInetSampleApplication::VeinsInetSampleApplication() {
 }
 
-bool VeinsInetSampleApplication::startApplication()
-{
+bool VeinsInetSampleApplication::startApplication() {
+
+    numCars++; // Increment for each initialized car
     // host[0] should stop at t=20s
     if (getParentModule()->getIndex() == 0) {
         auto callback = [this]() {
@@ -62,38 +66,50 @@ bool VeinsInetSampleApplication::startApplication()
             auto callback = [this]() {
                 traciVehicle->setSpeed(-1);
             };
-            timerManager.create(veins::TimerSpecification(callback).oneshotIn(SimTime(30, SIMTIME_S)));
+            timerManager.create(
+                    veins::TimerSpecification(callback).oneshotIn(
+                            SimTime(30, SIMTIME_S)));
         };
-        timerManager.create(veins::TimerSpecification(callback).oneshotAt(SimTime(20, SIMTIME_S)));
+        timerManager.create(
+                veins::TimerSpecification(callback).oneshotAt(
+                        SimTime(20, SIMTIME_S)));
     }
 
     return true;
 }
 
-bool VeinsInetSampleApplication::stopApplication()
-{
+bool VeinsInetSampleApplication::stopApplication() {
     return true;
 }
 
-VeinsInetSampleApplication::~VeinsInetSampleApplication()
-{
+VeinsInetSampleApplication::~VeinsInetSampleApplication() {
 }
 
-void VeinsInetSampleApplication::processPacket(std::shared_ptr<inet::Packet> pk)
-{
+void VeinsInetSampleApplication::processPacket(std::shared_ptr<inet::Packet> pk) {
     auto payload = pk->peekAtFront<VeinsInetSampleMessage>();
 
+    int senderIndex = -1; // Default to an invalid index
+    if (pk->getSenderModule() && pk->getSenderModule()->getParentModule()) {
+        senderIndex = pk->getSenderModule()->getParentModule()->getIndex(); // Safely attempting to get index
+    }
+
+    // Check if this car is the malicious one
+    if (getIndex() == maliciousCarId && senderIndex != -1) {
+        EV << "Malicious car " << getIndex() << " intercepting message from Car " << senderIndex << endl;
+        return; // Discard all intercepted packets, do not forward or process
+    }
+
+    // Normal processing for non-malicious cars
     EV_INFO << "Received packet: " << payload << endl;
+    if (senderIndex == 0) {
+        getParentModule()->getDisplayString().setTagArg("i", 1, "green");
+        traciVehicle->changeRoute(payload->getRoadId(), 999.9);
+    }
 
-    getParentModule()->getDisplayString().setTagArg("i", 1, "green");
-
-    traciVehicle->changeRoute(payload->getRoadId(), 999.9);
-
-    if (haveForwarded) return;
-
-    auto packet = createPacket("relay");
-    packet->insertAtBack(payload);
-    sendPacket(std::move(packet));
-
-    haveForwarded = true;
+    if (!haveForwarded && senderIndex != -1) {
+        auto packet = createPacket("relay");
+        packet->insertAtBack(payload);
+        sendPacket(std::move(packet));
+        haveForwarded = true;
+    }
 }
