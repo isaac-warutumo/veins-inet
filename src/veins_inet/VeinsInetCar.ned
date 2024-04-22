@@ -37,3 +37,14 @@ module VeinsInetCar extends AdhocHost
 
 }
 
+module BlackHoleCar extends VeinsInetCar
+{
+    parameters:
+        bool isMalicious = default(false);
+        
+        @display("i=device/cellphone");
+
+    submodules:
+
+}
+
