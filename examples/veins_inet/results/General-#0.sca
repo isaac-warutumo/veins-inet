@@ -1,8 +1,8 @@
 version 3
-run General-0-20240422-17:00:00-5308
+run General-0-20240506-20:58:08-12526
 attr configname General
-attr datetime 20240422-17:00:00
-attr datetimef 20240422-170000
+attr datetime 20240506-20:58:08
+attr datetimef 20240506-205808
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Scenario
-attr processid 5308
+attr processid 12526
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -22,6 +22,7 @@ config sim-time-limit 60s
 config debug-on-errors true
 config cmdenv-express-mode true
 config image-path ../../../../images
+config *.*.isMalicious true
 config *.node[*].numApps 1
 config *.node[*].app[0].typename org.car2x.veins.subprojects.veins_inet.VeinsInetSampleApplication
 config *.node[*].app[0].interface "\"wlan0\""
@@ -1474,6 +1475,7 @@ par Scenario.node[3].tn forwardProtocolRegistration true
 par Scenario.node[3].app[0] typename "\"org.car2x.veins.subprojects.veins_inet.VeinsInetSampleApplication\""
 par Scenario.node[3].app[0] interfaceTableModule "\"Scenario.node[3].interfaceTable\""
 par Scenario.node[3].app[0] interface "\"wlan0\""
+par Scenario.node[3].app[0] isMalicious false
 scalar Scenario.node[3].app[0] packetReceived:count 2
 attr interpolationmode none
 attr recordingmode count
@@ -2931,6 +2933,7 @@ par Scenario.node[1].tn forwardProtocolRegistration true
 par Scenario.node[1].app[0] typename "\"org.car2x.veins.subprojects.veins_inet.VeinsInetSampleApplication\""
 par Scenario.node[1].app[0] interfaceTableModule "\"Scenario.node[1].interfaceTable\""
 par Scenario.node[1].app[0] interface "\"wlan0\""
+par Scenario.node[1].app[0] isMalicious false
 scalar Scenario.node[1].app[0] packetReceived:count 2
 attr interpolationmode none
 attr recordingmode count
@@ -4424,6 +4427,7 @@ par Scenario.node[2].tn forwardProtocolRegistration true
 par Scenario.node[2].app[0] typename "\"org.car2x.veins.subprojects.veins_inet.VeinsInetSampleApplication\""
 par Scenario.node[2].app[0] interfaceTableModule "\"Scenario.node[2].interfaceTable\""
 par Scenario.node[2].app[0] interface "\"wlan0\""
+par Scenario.node[2].app[0] isMalicious false
 scalar Scenario.node[2].app[0] packetReceived:count 3
 attr interpolationmode none
 attr recordingmode count
@@ -5931,6 +5935,7 @@ par Scenario.node[0].tn forwardProtocolRegistration true
 par Scenario.node[0].app[0] typename "\"org.car2x.veins.subprojects.veins_inet.VeinsInetSampleApplication\""
 par Scenario.node[0].app[0] interfaceTableModule "\"Scenario.node[0].interfaceTable\""
 par Scenario.node[0].app[0] interface "\"wlan0\""
+par Scenario.node[0].app[0] isMalicious false
 scalar Scenario.node[0].app[0] packetReceived:count 3
 attr interpolationmode none
 attr recordingmode count

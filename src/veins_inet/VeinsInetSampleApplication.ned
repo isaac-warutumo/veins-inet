@@ -27,6 +27,8 @@ import org.car2x.veins.subprojects.veins_inet.VeinsInetApplicationBase;
 simple VeinsInetSampleApplication extends VeinsInetApplicationBase
 {
     parameters:
+         bool isMalicious = true;
+         
         @class(VeinsInetSampleApplication);
     gates:
 }

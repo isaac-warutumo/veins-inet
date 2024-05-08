@@ -65,5 +65,7 @@ network Scenario
         roadsOsgVisualizer: RoadsOsgVisualizer if useOsg {
             @display("p=192,416");
         }
+        
+        //create cars (nodes) that are capable of being blackhole attackers
         node[0]: BlackHoleCar;
 }
