@@ -1,0 +1,35 @@
+# Source files
+*.h
+*.cc
+*.ned
+*.msg
+*.ini
+*.XML
+*.sumocfg
+
+# Simulation output files
+*.vec
+*.sca
+
+# Animation files
+*.anf
+
+# Ignore directories
+bin/
+debug/
+release/
+
+# Object files, precompiled headers
+*.o
+*.d
+
+# Backup files created by editors
+*~
+*.bak
+*.tmp
+
+# OS generated files
+.DS_Store
+
+# Log files
+*.log
