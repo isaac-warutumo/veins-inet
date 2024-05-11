@@ -1,8 +1,15 @@
 version 3
+<<<<<<< HEAD
 run General-0-20240510-09:03:15-20042
 attr configname General
 attr datetime 20240510-09:03:15
 attr datetimef 20240510-090315
+=======
+run General-0-20240506-20:58:08-12526
+attr configname General
+attr datetime 20240506-20:58:08
+attr datetimef 20240506-205808
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,7 +17,11 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Scenario
+<<<<<<< HEAD
 attr processid 20042
+=======
+attr processid 12526
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -22,6 +33,10 @@ config sim-time-limit 60s
 config debug-on-errors true
 config cmdenv-express-mode true
 config image-path ../../../../images
+<<<<<<< HEAD
+=======
+config *.*.isMalicious true
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 config *.node[*].numApps 1
 config *.node[*].app[0].typename org.car2x.veins.subprojects.veins_inet.VeinsInetSampleApplication
 config *.node[*].app[0].interface "\"wlan0\""
@@ -509,6 +524,7 @@ vector 86 Scenario.node[1].wlan[0].mac.dcf.channelAccess.contention backoffPerio
 attr interpolationmode none
 attr recordingmode vector
 attr title "backoff periods"
+<<<<<<< HEAD
 vector 87 Scenario.node[2].wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
 attr interpolationmode none
 attr recordingmode vector(packetBytes)
@@ -518,58 +534,232 @@ attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr title "packets received, packetBytes"
 vector 89 Scenario.node[2].wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source ieee80211Multicast(packetReceivedFromPeer)
-attr title "packets received: multicast, packetBytes"
-vector 90 Scenario.node[2].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source ieee80211NotRetry(packetReceivedFromPeer)
-attr title "packets received: without retry, packetBytes"
-vector 91 Scenario.node[2].wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr title "packets sent to upper layer, packetBytes"
-vector 92 Scenario.node[2].udp packetReceived:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source packetReceived
-attr title "packets received, packetBytes"
-vector 93 Scenario.node[2].app[0] packetReceived:vector(packetBytes) ETV
-attr interpolationmode none
-attr recordingmode vector(packetBytes)
-attr source packetReceived
-attr title "packets received, packetBytes"
-vector 94 Scenario.node[2].app[0] throughput:vector ETV
-attr recordingmode vector
-attr source throughput(packetReceived)
-attr title throughput
-attr unit bps
-vector 95 Scenario.node[2].app[0] rcvdPkLifetime:vector ETV
-attr interpolationmode none
-attr recordingmode vector
-attr source dataAge(packetReceived)
-attr title "received packet lifetime"
-attr unit s
-vector 96 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+=======
+vector 87 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
 attr interpolationmode none
 attr recordingmode vector
 attr source queueingTime(packetPulled)
 attr title "queueing times"
 attr unit s
-vector 97 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+vector 88 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
 attr interpolationmode none
 attr recordingmode vector
 attr source packetLength(packetPulled)
 attr title "outgoing packet lengths"
 attr unit b
-vector 98 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+vector 89 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
 attr interpolationmode linear
 attr recordingmode vector
 attr source throughput(packetPulled)
 attr title "outgoing datarate"
 attr unit bps
+vector 90 Scenario.node[1].wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 91 Scenario.node[1].wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 92 Scenario.node[1].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 93 Scenario.node[1].wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 94 Scenario.node[1].wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 95 Scenario.node[1].wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 96 Scenario.node[1].wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 97 Scenario.node[0].wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 98 Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 99 Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+<<<<<<< HEAD
+vector 90 Scenario.node[2].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+=======
+vector 100 Scenario.node[0].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+<<<<<<< HEAD
+vector 91 Scenario.node[2].wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 92 Scenario.node[2].udp packetReceived:vector(packetBytes) ETV
+=======
+vector 101 Scenario.node[0].wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 102 Scenario.node[2].wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 103 Scenario.node[2].wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 104 Scenario.node[2].wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 105 Scenario.node[2].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 106 Scenario.node[2].wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 107 Scenario.node[2].udp packetReceived:vector(packetBytes) ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+<<<<<<< HEAD
+vector 93 Scenario.node[2].app[0] packetReceived:vector(packetBytes) ETV
+=======
+vector 108 Scenario.node[2].app[0] packetReceived:vector(packetBytes) ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+<<<<<<< HEAD
+vector 94 Scenario.node[2].app[0] throughput:vector ETV
+=======
+vector 109 Scenario.node[2].app[0] throughput:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
+attr recordingmode vector
+attr source throughput(packetReceived)
+attr title throughput
+attr unit bps
+<<<<<<< HEAD
+vector 95 Scenario.node[2].app[0] rcvdPkLifetime:vector ETV
+=======
+vector 110 Scenario.node[2].app[0] rcvdPkLifetime:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
+attr interpolationmode none
+attr recordingmode vector
+attr source dataAge(packetReceived)
+attr title "received packet lifetime"
+attr unit s
+<<<<<<< HEAD
+vector 96 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+=======
+vector 111 Scenario.node[2].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 112 Scenario.node[2].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 113 Scenario.node[2].lo[0].lo rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, packetBytes"
+vector 114 Scenario.node[2].lo[0].lo passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 115 Scenario.node[2].wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 116 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 117 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 118 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 119 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 120 Scenario.node[2].wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 121 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+<<<<<<< HEAD
+vector 97 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+=======
+vector 122 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+<<<<<<< HEAD
+vector 98 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+=======
+vector 123 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+<<<<<<< HEAD
 vector 99 Scenario.node[1].wlan[0].mac.dcf datarateSelected:vector ETV
 attr interpolationmode none
 attr recordingmode vector
@@ -579,29 +769,67 @@ attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr title "packets sent to lower layer, packetBytes"
 vector 101 Scenario.node[1].wlan[0].radio transmissionState:vector ETV
+=======
+vector 124 Scenario.node[2].wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 125 Scenario.node[2].wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 126 Scenario.node[2].wlan[0].radio transmissionState:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode sample-hold
 attr recordingmode vector
 attr source transmissionStateChanged
 attr title "Radio transmission state"
+<<<<<<< HEAD
 vector 102 Scenario.node[1].wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
 attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr title "packets sent, packetBytes"
 vector 103 Scenario.node[1].wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+=======
+vector 127 Scenario.node[1].wlan[0].mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 128 Scenario.node[1].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, packetBytes"
+vector 129 Scenario.node[2].wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 130 Scenario.node[2].wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr source ieee80211Multicast(packetSentToPeer)
 attr title "packets sent: multicast, packetBytes"
+<<<<<<< HEAD
 vector 104 Scenario.node[1].wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+=======
+vector 131 Scenario.node[2].wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr source ieee80211NotRetry(packetSentToPeer)
 attr title "packets sent: without retry, packetBytes"
+<<<<<<< HEAD
 vector 105 Scenario.node[1].wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+=======
+vector 132 Scenario.node[2].wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode none
 attr recordingmode vector
 attr source queueingTime(packetDequeued)
 attr title "queueing times"
+<<<<<<< HEAD
 vector 106 Scenario.node[0].wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
 attr interpolationmode none
 attr recordingmode vector(packetBytes)
@@ -633,112 +861,200 @@ attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr title "packets received, packetBytes"
 vector 113 Scenario.node[3].wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+=======
+vector 133 Scenario.node[3].wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 134 Scenario.node[3].wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 135 Scenario.node[3].wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr source ieee80211Multicast(packetReceivedFromPeer)
 attr title "packets received: multicast, packetBytes"
+<<<<<<< HEAD
 vector 114 Scenario.node[3].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+=======
+vector 136 Scenario.node[3].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr source ieee80211NotRetry(packetReceivedFromPeer)
 attr title "packets received: without retry, packetBytes"
+<<<<<<< HEAD
 vector 115 Scenario.node[3].wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
 attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr title "packets sent to upper layer, packetBytes"
 vector 116 Scenario.node[3].udp packetReceived:vector(packetBytes) ETV
+=======
+vector 137 Scenario.node[3].wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 138 Scenario.node[3].udp packetReceived:vector(packetBytes) ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr source packetReceived
 attr title "packets received, packetBytes"
+<<<<<<< HEAD
 vector 117 Scenario.node[3].app[0] packetReceived:vector(packetBytes) ETV
+=======
+vector 139 Scenario.node[3].app[0] packetReceived:vector(packetBytes) ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr source packetReceived
 attr title "packets received, packetBytes"
+<<<<<<< HEAD
 vector 118 Scenario.node[3].app[0] throughput:vector ETV
+=======
+vector 140 Scenario.node[3].app[0] throughput:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr recordingmode vector
 attr source throughput(packetReceived)
 attr title throughput
 attr unit bps
+<<<<<<< HEAD
 vector 119 Scenario.node[3].app[0] rcvdPkLifetime:vector ETV
+=======
+vector 141 Scenario.node[3].app[0] rcvdPkLifetime:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode none
 attr recordingmode vector
 attr source dataAge(packetReceived)
 attr title "received packet lifetime"
 attr unit s
+<<<<<<< HEAD
 vector 120 Scenario.node[2].app[0] packetSent:vector(packetBytes) ETV
+=======
+vector 142 Scenario.node[3].app[0] packetSent:vector(packetBytes) ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr source packetSent
 attr title "packets sent, packetBytes"
+<<<<<<< HEAD
 vector 121 Scenario.node[2].udp packetSent:vector(packetBytes) ETV
+=======
+vector 143 Scenario.node[3].udp packetSent:vector(packetBytes) ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr source packetSent
 attr title "packets sent, packetBytes"
+<<<<<<< HEAD
 vector 122 Scenario.node[2].lo[0].lo rcvdPkFromHl:vector(packetBytes) ETV
+=======
+vector 144 Scenario.node[3].lo[0].lo rcvdPkFromHl:vector(packetBytes) ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, packetBytes"
+<<<<<<< HEAD
 vector 123 Scenario.node[2].lo[0].lo passedUpPk:vector(packetBytes) ETV
+=======
+vector 145 Scenario.node[3].lo[0].lo passedUpPk:vector(packetBytes) ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr source packetSentToUpper
 attr title "packets passed to higher layer, packetBytes"
+<<<<<<< HEAD
 vector 124 Scenario.node[2].wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
 attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr title "packets received from upper layer, packetBytes"
 vector 125 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+=======
+vector 146 Scenario.node[3].wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 147 Scenario.node[3].wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode none
 attr recordingmode vector
 attr source packetLength(packetPushStarted)
 attr title "incoming packet lengths"
 attr unit b
+<<<<<<< HEAD
 vector 126 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+=======
+vector 148 Scenario.node[3].wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode linear
 attr recordingmode vector
 attr source throughput(packetPushStarted)
 attr title "incoming datarate"
 attr unit bps
+<<<<<<< HEAD
 vector 127 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+=======
+vector 149 Scenario.node[3].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode vector
 attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
 attr title "queue length"
 attr unit pk
+<<<<<<< HEAD
 vector 128 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+=======
+vector 150 Scenario.node[3].wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode vector
 attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
 attr title "queue bit length"
 attr unit b
+<<<<<<< HEAD
 vector 129 Scenario.node[2].wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
 attr interpolationmode none
 attr recordingmode vector
 attr title "backoff periods"
 vector 130 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+=======
+vector 151 Scenario.node[3].wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 152 Scenario.node[3].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode none
 attr recordingmode vector
 attr source queueingTime(packetPulled)
 attr title "queueing times"
 attr unit s
+<<<<<<< HEAD
 vector 131 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+=======
+vector 153 Scenario.node[3].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode none
 attr recordingmode vector
 attr source packetLength(packetPulled)
 attr title "outgoing packet lengths"
 attr unit b
+<<<<<<< HEAD
 vector 132 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+=======
+vector 154 Scenario.node[3].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode linear
 attr recordingmode vector
 attr source throughput(packetPulled)
 attr title "outgoing datarate"
 attr unit bps
+<<<<<<< HEAD
 vector 133 Scenario.node[2].wlan[0].mac.dcf datarateSelected:vector ETV
 attr interpolationmode none
 attr recordingmode vector
@@ -748,29 +1064,57 @@ attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr title "packets sent to lower layer, packetBytes"
 vector 135 Scenario.node[2].wlan[0].radio transmissionState:vector ETV
+=======
+vector 155 Scenario.node[3].wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 156 Scenario.node[3].wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 157 Scenario.node[3].wlan[0].radio transmissionState:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode sample-hold
 attr recordingmode vector
 attr source transmissionStateChanged
 attr title "Radio transmission state"
+<<<<<<< HEAD
 vector 136 Scenario.node[2].wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
 attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr title "packets sent, packetBytes"
 vector 137 Scenario.node[2].wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+=======
+vector 158 Scenario.node[3].wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 159 Scenario.node[3].wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr source ieee80211Multicast(packetSentToPeer)
 attr title "packets sent: multicast, packetBytes"
+<<<<<<< HEAD
 vector 138 Scenario.node[2].wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+=======
+vector 160 Scenario.node[3].wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr source ieee80211NotRetry(packetSentToPeer)
 attr title "packets sent: without retry, packetBytes"
+<<<<<<< HEAD
 vector 139 Scenario.node[2].wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+=======
+vector 161 Scenario.node[3].wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode none
 attr recordingmode vector
 attr source queueingTime(packetDequeued)
 attr title "queueing times"
+<<<<<<< HEAD
 0	2	0.1	0
 0	2	0.1	0
 0	227	20	1
@@ -1239,6 +1583,3976 @@ attr title "queueing times"
 49	427	30	10064
 49	429	30	10064
 49	510	30.00191224774	10064
+=======
+138	315	20.000754629678	108
+138	323	20.000754629678	108
+143	317	20.000754629678	108
+36	161	15.1	0
+36	315	20.000754629678	1
+36	323	20.000754629678	2
+37	161	15.1	0
+38	161	15.1	0
+144	319	20.000754629678	128
+145	319	20.000754629678	128
+154	328	15.2	0
+154	328	15.3	0
+154	328	15.4	0
+154	328	15.5	0
+154	328	15.6	0
+154	328	15.7	0
+154	328	15.8	0
+154	328	15.9	0
+154	328	16	0
+154	328	16.1	0
+154	328	16.2	0
+154	328	16.3	0
+154	328	16.4	0
+154	328	16.5	0
+154	328	16.6	0
+154	328	16.7	0
+154	328	16.8	0
+154	328	16.9	0
+154	328	17	0
+154	328	17.1	0
+154	328	17.2	0
+154	328	17.3	0
+154	328	17.4	0
+154	328	17.5	0
+154	328	17.6	0
+154	328	17.7	0
+154	328	17.8	0
+154	328	17.9	0
+154	328	18	0
+154	328	18.1	0
+154	328	18.2	0
+154	328	18.3	0
+154	328	18.4	0
+154	328	18.5	0
+154	328	18.6	0
+154	328	18.7	0
+154	328	18.8	0
+154	328	18.9	0
+154	328	19	0
+154	328	19.1	0
+154	328	19.2	0
+154	328	19.3	0
+154	328	19.4	0
+154	328	19.5	0
+154	328	19.6	0
+154	328	19.7	0
+154	328	19.8	0
+154	328	19.9	0
+154	328	20	0
+154	559	20.1	12640
+154	559	20.2	0
+154	559	20.3	0
+154	559	20.4	0
+154	559	20.5	0
+154	559	20.6	0
+154	559	20.7	0
+154	559	20.8	0
+154	559	20.9	0
+154	559	21	0
+154	559	21.1	0
+154	559	21.2	0
+154	559	21.3	0
+154	559	21.4	0
+154	559	21.5	0
+154	559	21.6	0
+154	559	21.7	0
+154	559	21.8	0
+154	559	21.9	0
+154	559	22	0
+154	559	22.1	0
+154	559	22.2	0
+154	559	22.3	0
+154	559	22.4	0
+154	559	22.5	0
+154	559	22.6	0
+154	559	22.7	0
+154	559	22.8	0
+154	559	22.9	0
+154	559	23	0
+154	559	23.1	0
+154	559	23.2	0
+154	559	23.3	0
+154	559	23.4	0
+154	559	23.5	0
+154	559	23.6	0
+154	559	23.7	0
+154	559	23.8	0
+154	559	23.9	0
+154	559	24	0
+154	559	24.1	0
+154	559	24.2	0
+154	559	24.3	0
+154	559	24.4	0
+154	559	24.5	0
+154	559	24.6	0
+154	559	24.7	0
+154	559	24.8	0
+154	559	24.9	0
+154	559	25	0
+154	559	25.1	0
+154	559	25.2	0
+154	559	25.3	0
+154	559	25.4	0
+154	559	25.5	0
+154	559	25.6	0
+154	559	25.7	0
+154	559	25.8	0
+154	559	25.9	0
+154	559	26	0
+154	559	26.1	0
+154	559	26.2	0
+154	559	26.3	0
+154	559	26.4	0
+154	559	26.5	0
+154	559	26.6	0
+154	559	26.7	0
+154	559	26.8	0
+154	559	26.9	0
+154	559	27	0
+154	559	27.1	0
+154	559	27.2	0
+154	559	27.3	0
+154	559	27.4	0
+154	559	27.5	0
+154	559	27.6	0
+154	559	27.7	0
+154	559	27.8	0
+154	559	27.9	0
+154	559	28	0
+154	559	28.1	0
+154	559	28.2	0
+154	559	28.3	0
+154	559	28.4	0
+154	559	28.5	0
+154	559	28.6	0
+154	559	28.7	0
+154	559	28.8	0
+154	559	28.9	0
+154	559	29	0
+154	559	29.1	0
+154	559	29.2	0
+154	559	29.3	0
+154	559	29.4	0
+154	559	29.5	0
+154	559	29.6	0
+154	559	29.7	0
+154	559	29.8	0
+154	559	29.9	0
+154	559	30	0
+154	559	30.1	0
+154	559	30.2	0
+154	559	30.3	0
+154	559	30.4	0
+154	559	30.5	0
+154	559	30.6	0
+154	559	30.7	0
+154	559	30.8	0
+154	559	30.9	0
+154	559	31	0
+154	559	31.1	0
+154	559	31.2	0
+154	559	31.3	0
+154	559	31.4	0
+154	559	31.5	0
+154	559	31.6	0
+154	559	31.7	0
+154	559	31.8	0
+154	559	31.9	0
+154	559	32	0
+154	559	32.1	0
+154	559	32.2	0
+154	559	32.3	0
+154	559	32.4	0
+154	559	32.5	0
+154	559	32.6	0
+154	559	32.7	0
+154	559	32.8	0
+154	559	32.9	0
+154	559	33	0
+154	559	33.1	0
+154	559	33.2	0
+154	559	33.3	0
+154	559	33.4	0
+154	559	33.5	0
+154	559	33.6	0
+154	559	33.7	0
+154	559	33.8	0
+154	559	33.9	0
+154	559	34	0
+154	559	34.1	0
+154	559	34.2	0
+154	559	34.3	0
+154	559	34.4	0
+154	559	34.5	0
+154	559	34.6	0
+154	559	34.7	0
+154	559	34.8	0
+154	559	34.9	0
+154	559	35	0
+154	559	35.1	0
+154	559	35.2	0
+154	559	35.3	0
+154	559	35.4	0
+154	559	35.5	0
+154	559	35.6	0
+154	559	35.7	0
+154	559	35.8	0
+154	559	35.9	0
+154	559	36	0
+154	559	36.1	0
+154	559	36.2	0
+154	559	36.3	0
+154	559	36.4	0
+154	559	36.5	0
+154	559	36.6	0
+154	559	36.7	0
+154	559	36.8	0
+154	559	36.9	0
+154	559	37	0
+154	559	37.1	0
+154	559	37.2	0
+154	559	37.3	0
+154	559	37.4	0
+154	559	37.5	0
+154	559	37.6	0
+154	559	37.7	0
+154	559	37.8	0
+154	559	37.9	0
+154	559	38	0
+154	559	38.1	0
+154	559	38.2	0
+154	559	38.3	0
+154	559	38.4	0
+154	559	38.5	0
+154	559	38.6	0
+154	559	38.7	0
+154	559	38.8	0
+154	559	38.9	0
+154	559	39	0
+154	559	39.1	0
+154	559	39.2	0
+154	559	39.3	0
+154	559	39.4	0
+154	559	39.5	0
+154	559	39.6	0
+154	559	39.7	0
+154	559	39.8	0
+154	559	39.9	0
+154	559	40	0
+154	559	40.1	0
+154	559	40.2	0
+154	559	40.3	0
+153	328	20.000916629678	1264
+152	328	20.000916629678	0.000162
+148	322	15.2	0
+148	322	15.3	0
+148	322	15.4	0
+148	322	15.5	0
+148	322	15.6	0
+148	322	15.7	0
+148	322	15.8	0
+148	322	15.9	0
+148	322	16	0
+148	322	16.1	0
+148	322	16.2	0
+148	322	16.3	0
+148	322	16.4	0
+148	322	16.5	0
+148	322	16.6	0
+148	322	16.7	0
+148	322	16.8	0
+148	322	16.9	0
+148	322	17	0
+148	322	17.1	0
+148	322	17.2	0
+148	322	17.3	0
+148	322	17.4	0
+148	322	17.5	0
+148	322	17.6	0
+148	322	17.7	0
+148	322	17.8	0
+148	322	17.9	0
+148	322	18	0
+148	322	18.1	0
+148	322	18.2	0
+148	322	18.3	0
+148	322	18.4	0
+148	322	18.5	0
+148	322	18.6	0
+148	322	18.7	0
+148	322	18.8	0
+148	322	18.9	0
+148	322	19	0
+148	322	19.1	0
+148	322	19.2	0
+148	322	19.3	0
+148	322	19.4	0
+148	322	19.5	0
+148	322	19.6	0
+148	322	19.7	0
+148	322	19.8	0
+148	322	19.9	0
+148	322	20	0
+148	559	20.1	12640
+148	559	20.2	0
+148	559	20.3	0
+148	559	20.4	0
+148	559	20.5	0
+148	559	20.6	0
+148	559	20.7	0
+148	559	20.8	0
+148	559	20.9	0
+148	559	21	0
+148	559	21.1	0
+148	559	21.2	0
+148	559	21.3	0
+148	559	21.4	0
+148	559	21.5	0
+148	559	21.6	0
+148	559	21.7	0
+148	559	21.8	0
+148	559	21.9	0
+148	559	22	0
+148	559	22.1	0
+148	559	22.2	0
+148	559	22.3	0
+148	559	22.4	0
+148	559	22.5	0
+148	559	22.6	0
+148	559	22.7	0
+148	559	22.8	0
+148	559	22.9	0
+148	559	23	0
+148	559	23.1	0
+148	559	23.2	0
+148	559	23.3	0
+148	559	23.4	0
+148	559	23.5	0
+148	559	23.6	0
+148	559	23.7	0
+148	559	23.8	0
+148	559	23.9	0
+148	559	24	0
+148	559	24.1	0
+148	559	24.2	0
+148	559	24.3	0
+148	559	24.4	0
+148	559	24.5	0
+148	559	24.6	0
+148	559	24.7	0
+148	559	24.8	0
+148	559	24.9	0
+148	559	25	0
+148	559	25.1	0
+148	559	25.2	0
+148	559	25.3	0
+148	559	25.4	0
+148	559	25.5	0
+148	559	25.6	0
+148	559	25.7	0
+148	559	25.8	0
+148	559	25.9	0
+148	559	26	0
+148	559	26.1	0
+148	559	26.2	0
+148	559	26.3	0
+148	559	26.4	0
+148	559	26.5	0
+148	559	26.6	0
+148	559	26.7	0
+148	559	26.8	0
+148	559	26.9	0
+148	559	27	0
+148	559	27.1	0
+148	559	27.2	0
+148	559	27.3	0
+148	559	27.4	0
+148	559	27.5	0
+148	559	27.6	0
+148	559	27.7	0
+148	559	27.8	0
+148	559	27.9	0
+148	559	28	0
+148	559	28.1	0
+148	559	28.2	0
+148	559	28.3	0
+148	559	28.4	0
+148	559	28.5	0
+148	559	28.6	0
+148	559	28.7	0
+148	559	28.8	0
+148	559	28.9	0
+148	559	29	0
+148	559	29.1	0
+148	559	29.2	0
+148	559	29.3	0
+148	559	29.4	0
+148	559	29.5	0
+148	559	29.6	0
+148	559	29.7	0
+148	559	29.8	0
+148	559	29.9	0
+148	559	30	0
+148	559	30.1	0
+148	559	30.2	0
+148	559	30.3	0
+148	559	30.4	0
+148	559	30.5	0
+148	559	30.6	0
+148	559	30.7	0
+148	559	30.8	0
+148	559	30.9	0
+148	559	31	0
+148	559	31.1	0
+148	559	31.2	0
+148	559	31.3	0
+148	559	31.4	0
+148	559	31.5	0
+148	559	31.6	0
+148	559	31.7	0
+148	559	31.8	0
+148	559	31.9	0
+148	559	32	0
+148	559	32.1	0
+148	559	32.2	0
+148	559	32.3	0
+148	559	32.4	0
+148	559	32.5	0
+148	559	32.6	0
+148	559	32.7	0
+148	559	32.8	0
+148	559	32.9	0
+148	559	33	0
+148	559	33.1	0
+148	559	33.2	0
+148	559	33.3	0
+148	559	33.4	0
+148	559	33.5	0
+148	559	33.6	0
+148	559	33.7	0
+148	559	33.8	0
+148	559	33.9	0
+148	559	34	0
+148	559	34.1	0
+148	559	34.2	0
+148	559	34.3	0
+148	559	34.4	0
+148	559	34.5	0
+148	559	34.6	0
+148	559	34.7	0
+148	559	34.8	0
+148	559	34.9	0
+148	559	35	0
+148	559	35.1	0
+148	559	35.2	0
+148	559	35.3	0
+148	559	35.4	0
+148	559	35.5	0
+148	559	35.6	0
+148	559	35.7	0
+148	559	35.8	0
+148	559	35.9	0
+148	559	36	0
+148	559	36.1	0
+148	559	36.2	0
+148	559	36.3	0
+148	559	36.4	0
+148	559	36.5	0
+148	559	36.6	0
+148	559	36.7	0
+148	559	36.8	0
+148	559	36.9	0
+148	559	37	0
+148	559	37.1	0
+148	559	37.2	0
+148	559	37.3	0
+148	559	37.4	0
+148	559	37.5	0
+148	559	37.6	0
+148	559	37.7	0
+148	559	37.8	0
+148	559	37.9	0
+148	559	38	0
+148	559	38.1	0
+148	559	38.2	0
+148	559	38.3	0
+148	559	38.4	0
+148	559	38.5	0
+148	559	38.6	0
+148	559	38.7	0
+148	559	38.8	0
+148	559	38.9	0
+148	559	39	0
+148	559	39.1	0
+148	559	39.2	0
+148	559	39.3	0
+148	559	39.4	0
+148	559	39.5	0
+148	559	39.6	0
+148	559	39.7	0
+148	559	39.8	0
+148	559	39.9	0
+148	559	40	0
+148	559	40.1	0
+148	559	40.2	0
+148	559	40.3	0
+147	322	20.000754629678	1264
+149	322	20.000754629678	1
+149	328	20.000916629678	0
+150	322	20.000754629678	1264
+150	328	20.000916629678	0
+161	334	20.001068629678	0.000152
+34	161	15.1	0
+34	161	15.1	0
+34	328	20.000916629678	1
+34	334	20.001068629678	0
+35	161	15.1	0
+35	161	15.1	0
+35	322	20.000754629678	1
+35	327	20.000916629678	0
+151	322	20.000754629678	8
+42	161	15.1	0
+42	161	15.1	0
+42	300	20.000602629678	0
+42	300	20.000602629678	0
+42	311	20.000754629678	0
+42	311	20.000754629678	0
+42	322	20.000754629678	0
+42	322	20.000754629678	2
+42	327	20.000916629678	2
+42	327	20.000916629678	0
+42	329	20.000916629678	0
+42	329	20.000916629678	0
+42	335	20.001068629678	0
+42	335	20.001068629678	0
+43	161	15.1	15
+155	328	20.000916629678	12000000
+33	161	15.1	0
+33	161	15.1	0
+33	328	20.000916629678	1
+33	334	20.001068629678	0
+136	312	20.000754629678	158
+135	312	20.000754629678	158
+134	312	20.000754629678	158
+160	334	20.001068629678	158
+159	334	20.001068629678	158
+158	334	20.001068629678	158
+133	312	20.000754629678	158
+156	328	20.000916629678	158
+146	322	20.000754629678	130
+137	312	20.000754629678	130
+40	161	15.1	3
+39	161	15.1	0
+39	161	15.1	0
+39	161	15.1	2
+39	329	20.000916629678	3
+39	335	20.001068629678	2
+41	161	15.1	1
+41	300	20.000602629678	3
+41	311	20.000754629678	1
+41	329	20.000916629678	0
+41	335	20.001068629678	1
+157	329	20.000916629678	1
+157	330	20.000916629678	2
+157	334	20.001068629678	1
+157	335	20.001068629678	0
+141	316	20.000754629678	0.000754629678
+141	324	20.000754629678	0.000754629678
+140	316	15.2	0
+140	316	15.3	0
+140	316	15.4	0
+140	316	15.5	0
+140	316	15.6	0
+140	316	15.7	0
+140	316	15.8	0
+140	316	15.9	0
+140	316	16	0
+140	316	16.1	0
+140	316	16.2	0
+140	316	16.3	0
+140	316	16.4	0
+140	316	16.5	0
+140	316	16.6	0
+140	316	16.7	0
+140	316	16.8	0
+140	316	16.9	0
+140	316	17	0
+140	316	17.1	0
+140	316	17.2	0
+140	316	17.3	0
+140	316	17.4	0
+140	316	17.5	0
+140	316	17.6	0
+140	316	17.7	0
+140	316	17.8	0
+140	316	17.9	0
+140	316	18	0
+140	316	18.1	0
+140	316	18.2	0
+140	316	18.3	0
+140	316	18.4	0
+140	316	18.5	0
+140	316	18.6	0
+140	316	18.7	0
+140	316	18.8	0
+140	316	18.9	0
+140	316	19	0
+140	316	19.1	0
+140	316	19.2	0
+140	316	19.3	0
+140	316	19.4	0
+140	316	19.5	0
+140	316	19.6	0
+140	316	19.7	0
+140	316	19.8	0
+140	316	19.9	0
+140	316	20	0
+140	559	20.1	16000
+140	559	20.2	0
+140	559	20.3	0
+140	559	20.4	0
+140	559	20.5	0
+140	559	20.6	0
+140	559	20.7	0
+140	559	20.8	0
+140	559	20.9	0
+140	559	21	0
+140	559	21.1	0
+140	559	21.2	0
+140	559	21.3	0
+140	559	21.4	0
+140	559	21.5	0
+140	559	21.6	0
+140	559	21.7	0
+140	559	21.8	0
+140	559	21.9	0
+140	559	22	0
+140	559	22.1	0
+140	559	22.2	0
+140	559	22.3	0
+140	559	22.4	0
+140	559	22.5	0
+140	559	22.6	0
+140	559	22.7	0
+140	559	22.8	0
+140	559	22.9	0
+140	559	23	0
+140	559	23.1	0
+140	559	23.2	0
+140	559	23.3	0
+140	559	23.4	0
+140	559	23.5	0
+140	559	23.6	0
+140	559	23.7	0
+140	559	23.8	0
+140	559	23.9	0
+140	559	24	0
+140	559	24.1	0
+140	559	24.2	0
+140	559	24.3	0
+140	559	24.4	0
+140	559	24.5	0
+140	559	24.6	0
+140	559	24.7	0
+140	559	24.8	0
+140	559	24.9	0
+140	559	25	0
+140	559	25.1	0
+140	559	25.2	0
+140	559	25.3	0
+140	559	25.4	0
+140	559	25.5	0
+140	559	25.6	0
+140	559	25.7	0
+140	559	25.8	0
+140	559	25.9	0
+140	559	26	0
+140	559	26.1	0
+140	559	26.2	0
+140	559	26.3	0
+140	559	26.4	0
+140	559	26.5	0
+140	559	26.6	0
+140	559	26.7	0
+140	559	26.8	0
+140	559	26.9	0
+140	559	27	0
+140	559	27.1	0
+140	559	27.2	0
+140	559	27.3	0
+140	559	27.4	0
+140	559	27.5	0
+140	559	27.6	0
+140	559	27.7	0
+140	559	27.8	0
+140	559	27.9	0
+140	559	28	0
+140	559	28.1	0
+140	559	28.2	0
+140	559	28.3	0
+140	559	28.4	0
+140	559	28.5	0
+140	559	28.6	0
+140	559	28.7	0
+140	559	28.8	0
+140	559	28.9	0
+140	559	29	0
+140	559	29.1	0
+140	559	29.2	0
+140	559	29.3	0
+140	559	29.4	0
+140	559	29.5	0
+140	559	29.6	0
+140	559	29.7	0
+140	559	29.8	0
+140	559	29.9	0
+140	559	30	0
+140	559	30.1	0
+140	559	30.2	0
+140	559	30.3	0
+140	559	30.4	0
+140	559	30.5	0
+140	559	30.6	0
+140	559	30.7	0
+140	559	30.8	0
+140	559	30.9	0
+140	559	31	0
+140	559	31.1	0
+140	559	31.2	0
+140	559	31.3	0
+140	559	31.4	0
+140	559	31.5	0
+140	559	31.6	0
+140	559	31.7	0
+140	559	31.8	0
+140	559	31.9	0
+140	559	32	0
+140	559	32.1	0
+140	559	32.2	0
+140	559	32.3	0
+140	559	32.4	0
+140	559	32.5	0
+140	559	32.6	0
+140	559	32.7	0
+140	559	32.8	0
+140	559	32.9	0
+140	559	33	0
+140	559	33.1	0
+140	559	33.2	0
+140	559	33.3	0
+140	559	33.4	0
+140	559	33.5	0
+140	559	33.6	0
+140	559	33.7	0
+140	559	33.8	0
+140	559	33.9	0
+140	559	34	0
+140	559	34.1	0
+140	559	34.2	0
+140	559	34.3	0
+140	559	34.4	0
+140	559	34.5	0
+140	559	34.6	0
+140	559	34.7	0
+140	559	34.8	0
+140	559	34.9	0
+140	559	35	0
+140	559	35.1	0
+140	559	35.2	0
+140	559	35.3	0
+140	559	35.4	0
+140	559	35.5	0
+140	559	35.6	0
+140	559	35.7	0
+140	559	35.8	0
+140	559	35.9	0
+140	559	36	0
+140	559	36.1	0
+140	559	36.2	0
+140	559	36.3	0
+140	559	36.4	0
+140	559	36.5	0
+140	559	36.6	0
+140	559	36.7	0
+140	559	36.8	0
+140	559	36.9	0
+140	559	37	0
+140	559	37.1	0
+140	559	37.2	0
+140	559	37.3	0
+140	559	37.4	0
+140	559	37.5	0
+140	559	37.6	0
+140	559	37.7	0
+140	559	37.8	0
+140	559	37.9	0
+140	559	38	0
+140	559	38.1	0
+140	559	38.2	0
+140	559	38.3	0
+140	559	38.4	0
+140	559	38.5	0
+140	559	38.6	0
+140	559	38.7	0
+140	559	38.8	0
+140	559	38.9	0
+140	559	39	0
+140	559	39.1	0
+140	559	39.2	0
+140	559	39.3	0
+140	559	39.4	0
+140	559	39.5	0
+140	559	39.6	0
+140	559	39.7	0
+140	559	39.8	0
+140	559	39.9	0
+140	559	40	0
+140	559	40.1	0
+140	559	40.2	0
+140	559	40.3	0
+139	316	20.000754629678	100
+139	324	20.000754629678	100
+142	316	20.000754629678	100
+73	247	20.000152182948	108
+73	255	20.000152182948	108
+78	249	20.000152182948	108
+14	55	5.1	0
+14	247	20.000152182948	1
+14	255	20.000152182948	2
+15	55	5.1	0
+16	55	5.1	0
+79	251	20.000152182948	128
+80	251	20.000152182948	128
+89	260	5.2	0
+89	260	5.3	0
+89	260	5.4	0
+89	260	5.5	0
+89	260	5.6	0
+89	260	5.7	0
+89	260	5.8	0
+89	260	5.9	0
+89	260	6	0
+89	260	6.1	0
+89	260	6.2	0
+89	260	6.3	0
+89	260	6.4	0
+89	260	6.5	0
+89	260	6.6	0
+89	260	6.7	0
+89	260	6.8	0
+89	260	6.9	0
+89	260	7	0
+89	260	7.1	0
+89	260	7.2	0
+89	260	7.3	0
+89	260	7.4	0
+89	260	7.5	0
+89	260	7.6	0
+89	260	7.7	0
+89	260	7.8	0
+89	260	7.9	0
+89	260	8	0
+89	260	8.1	0
+89	260	8.2	0
+89	260	8.3	0
+89	260	8.4	0
+89	260	8.5	0
+89	260	8.6	0
+89	260	8.7	0
+89	260	8.8	0
+89	260	8.9	0
+89	260	9	0
+89	260	9.1	0
+89	260	9.2	0
+89	260	9.3	0
+89	260	9.4	0
+89	260	9.5	0
+89	260	9.6	0
+89	260	9.7	0
+89	260	9.8	0
+89	260	9.9	0
+89	260	10	0
+89	260	10.1	0
+89	260	10.2	0
+89	260	10.3	0
+89	260	10.4	0
+89	260	10.5	0
+89	260	10.6	0
+89	260	10.7	0
+89	260	10.8	0
+89	260	10.9	0
+89	260	11	0
+89	260	11.1	0
+89	260	11.2	0
+89	260	11.3	0
+89	260	11.4	0
+89	260	11.5	0
+89	260	11.6	0
+89	260	11.7	0
+89	260	11.8	0
+89	260	11.9	0
+89	260	12	0
+89	260	12.1	0
+89	260	12.2	0
+89	260	12.3	0
+89	260	12.4	0
+89	260	12.5	0
+89	260	12.6	0
+89	260	12.7	0
+89	260	12.8	0
+89	260	12.9	0
+89	260	13	0
+89	260	13.1	0
+89	260	13.2	0
+89	260	13.3	0
+89	260	13.4	0
+89	260	13.5	0
+89	260	13.6	0
+89	260	13.7	0
+89	260	13.8	0
+89	260	13.9	0
+89	260	14	0
+89	260	14.1	0
+89	260	14.2	0
+89	260	14.3	0
+89	260	14.4	0
+89	260	14.5	0
+89	260	14.6	0
+89	260	14.7	0
+89	260	14.8	0
+89	260	14.9	0
+89	260	15	0
+89	260	15.1	0
+89	260	15.2	0
+89	260	15.3	0
+89	260	15.4	0
+89	260	15.5	0
+89	260	15.6	0
+89	260	15.7	0
+89	260	15.8	0
+89	260	15.9	0
+89	260	16	0
+89	260	16.1	0
+89	260	16.2	0
+89	260	16.3	0
+89	260	16.4	0
+89	260	16.5	0
+89	260	16.6	0
+89	260	16.7	0
+89	260	16.8	0
+89	260	16.9	0
+89	260	17	0
+89	260	17.1	0
+89	260	17.2	0
+89	260	17.3	0
+89	260	17.4	0
+89	260	17.5	0
+89	260	17.6	0
+89	260	17.7	0
+89	260	17.8	0
+89	260	17.9	0
+89	260	18	0
+89	260	18.1	0
+89	260	18.2	0
+89	260	18.3	0
+89	260	18.4	0
+89	260	18.5	0
+89	260	18.6	0
+89	260	18.7	0
+89	260	18.8	0
+89	260	18.9	0
+89	260	19	0
+89	260	19.1	0
+89	260	19.2	0
+89	260	19.3	0
+89	260	19.4	0
+89	260	19.5	0
+89	260	19.6	0
+89	260	19.7	0
+89	260	19.8	0
+89	260	19.9	0
+89	260	20	0
+89	602	20.1	12640
+89	602	20.2	0
+89	602	20.3	0
+89	602	20.4	0
+89	602	20.5	0
+89	602	20.6	0
+89	602	20.7	0
+89	602	20.8	0
+89	602	20.9	0
+89	602	21	0
+89	602	21.1	0
+89	602	21.2	0
+89	602	21.3	0
+89	602	21.4	0
+89	602	21.5	0
+89	602	21.6	0
+89	602	21.7	0
+89	602	21.8	0
+89	602	21.9	0
+89	602	22	0
+89	602	22.1	0
+89	602	22.2	0
+89	602	22.3	0
+89	602	22.4	0
+89	602	22.5	0
+89	602	22.6	0
+89	602	22.7	0
+89	602	22.8	0
+89	602	22.9	0
+89	602	23	0
+89	602	23.1	0
+89	602	23.2	0
+89	602	23.3	0
+89	602	23.4	0
+89	602	23.5	0
+89	602	23.6	0
+89	602	23.7	0
+89	602	23.8	0
+89	602	23.9	0
+89	602	24	0
+89	602	24.1	0
+89	602	24.2	0
+89	602	24.3	0
+89	602	24.4	0
+89	602	24.5	0
+89	602	24.6	0
+89	602	24.7	0
+89	602	24.8	0
+89	602	24.9	0
+89	602	25	0
+89	602	25.1	0
+89	602	25.2	0
+89	602	25.3	0
+89	602	25.4	0
+89	602	25.5	0
+89	602	25.6	0
+89	602	25.7	0
+89	602	25.8	0
+89	602	25.9	0
+89	602	26	0
+89	602	26.1	0
+89	602	26.2	0
+89	602	26.3	0
+89	602	26.4	0
+89	602	26.5	0
+89	602	26.6	0
+89	602	26.7	0
+89	602	26.8	0
+89	602	26.9	0
+89	602	27	0
+89	602	27.1	0
+89	602	27.2	0
+89	602	27.3	0
+89	602	27.4	0
+89	602	27.5	0
+89	602	27.6	0
+89	602	27.7	0
+89	602	27.8	0
+89	602	27.9	0
+89	602	28	0
+89	602	28.1	0
+89	602	28.2	0
+89	602	28.3	0
+89	602	28.4	0
+89	602	28.5	0
+89	602	28.6	0
+89	602	28.7	0
+89	602	28.8	0
+89	602	28.9	0
+89	602	29	0
+89	602	29.1	0
+89	602	29.2	0
+89	602	29.3	0
+89	602	29.4	0
+89	602	29.5	0
+89	602	29.6	0
+89	602	29.7	0
+89	602	29.8	0
+89	602	29.9	0
+89	602	30	0
+89	602	30.1	0
+89	602	30.2	0
+89	602	30.3	0
+89	602	30.4	0
+89	602	30.5	0
+89	602	30.6	0
+89	602	30.7	0
+89	602	30.8	0
+89	602	30.9	0
+89	602	31	0
+89	602	31.1	0
+89	602	31.2	0
+89	602	31.3	0
+89	602	31.4	0
+89	602	31.5	0
+89	602	31.6	0
+89	602	31.7	0
+89	602	31.8	0
+89	602	31.9	0
+89	602	32	0
+89	602	32.1	0
+89	602	32.2	0
+89	602	32.3	0
+89	602	32.4	0
+89	602	32.5	0
+89	602	32.6	0
+89	602	32.7	0
+89	602	32.8	0
+89	602	32.9	0
+89	602	33	0
+89	602	33.1	0
+89	602	33.2	0
+89	602	33.3	0
+89	602	33.4	0
+89	602	33.5	0
+89	602	33.6	0
+89	602	33.7	0
+89	602	33.8	0
+89	602	33.9	0
+89	602	34	0
+89	602	34.1	0
+89	602	34.2	0
+89	602	34.3	0
+89	602	34.4	0
+89	602	34.5	0
+89	602	34.6	0
+89	602	34.7	0
+89	602	34.8	0
+89	602	34.9	0
+89	602	35	0
+89	602	35.1	0
+89	602	35.2	0
+89	602	35.3	0
+89	602	35.4	0
+89	602	35.5	0
+89	602	35.6	0
+89	602	35.7	0
+89	602	35.8	0
+89	602	35.9	0
+89	602	36	0
+89	602	36.1	0
+89	602	36.2	0
+89	602	36.3	0
+89	602	36.4	0
+89	602	36.5	0
+89	602	36.6	0
+89	602	36.7	0
+89	602	36.8	0
+89	602	36.9	0
+89	602	37	0
+89	602	37.1	0
+89	602	37.2	0
+89	602	37.3	0
+89	602	37.4	0
+89	602	37.5	0
+89	602	37.6	0
+89	602	37.7	0
+89	602	37.8	0
+89	602	37.9	0
+89	602	38	0
+89	602	38.1	0
+89	602	38.2	0
+89	602	38.3	0
+89	602	38.4	0
+89	602	38.5	0
+89	602	38.6	0
+89	602	38.7	0
+89	602	38.8	0
+89	602	38.9	0
+89	602	39	0
+89	602	39.1	0
+89	602	39.2	0
+89	602	39.3	0
+89	602	39.4	0
+89	602	39.5	0
+89	602	39.6	0
+89	602	39.7	0
+89	602	39.8	0
+89	602	39.9	0
+89	602	40	0
+89	602	40.1	0
+89	602	40.2	0
+89	602	40.3	0
+89	602	40.4	0
+89	602	40.5	0
+89	602	40.6	0
+89	602	40.7	0
+89	602	40.8	0
+89	602	40.9	0
+89	602	41	0
+89	602	41.1	0
+89	602	41.2	0
+89	602	41.3	0
+89	602	41.4	0
+89	602	41.5	0
+89	602	41.6	0
+89	602	41.7	0
+89	602	41.8	0
+89	602	41.9	0
+89	602	42	0
+89	602	42.1	0
+89	602	42.2	0
+89	602	42.3	0
+89	602	42.4	0
+89	602	42.5	0
+89	602	42.6	0
+89	602	42.7	0
+89	602	42.8	0
+89	602	42.9	0
+89	602	43	0
+89	602	43.1	0
+89	602	43.2	0
+89	602	43.3	0
+89	602	43.4	0
+89	602	43.5	0
+89	602	43.6	0
+89	602	43.7	0
+89	602	43.8	0
+89	602	43.9	0
+89	602	44	0
+89	602	44.1	0
+89	602	44.2	0
+89	602	44.3	0
+89	602	44.4	0
+89	602	44.5	0
+89	602	44.6	0
+88	260	20.000288182948	1264
+87	260	20.000288182948	0.000136
+83	254	5.2	0
+83	254	5.3	0
+83	254	5.4	0
+83	254	5.5	0
+83	254	5.6	0
+83	254	5.7	0
+83	254	5.8	0
+83	254	5.9	0
+83	254	6	0
+83	254	6.1	0
+83	254	6.2	0
+83	254	6.3	0
+83	254	6.4	0
+83	254	6.5	0
+83	254	6.6	0
+83	254	6.7	0
+83	254	6.8	0
+83	254	6.9	0
+83	254	7	0
+83	254	7.1	0
+83	254	7.2	0
+83	254	7.3	0
+83	254	7.4	0
+83	254	7.5	0
+83	254	7.6	0
+83	254	7.7	0
+83	254	7.8	0
+83	254	7.9	0
+83	254	8	0
+83	254	8.1	0
+83	254	8.2	0
+83	254	8.3	0
+83	254	8.4	0
+83	254	8.5	0
+83	254	8.6	0
+83	254	8.7	0
+83	254	8.8	0
+83	254	8.9	0
+83	254	9	0
+83	254	9.1	0
+83	254	9.2	0
+83	254	9.3	0
+83	254	9.4	0
+83	254	9.5	0
+83	254	9.6	0
+83	254	9.7	0
+83	254	9.8	0
+83	254	9.9	0
+83	254	10	0
+83	254	10.1	0
+83	254	10.2	0
+83	254	10.3	0
+83	254	10.4	0
+83	254	10.5	0
+83	254	10.6	0
+83	254	10.7	0
+83	254	10.8	0
+83	254	10.9	0
+83	254	11	0
+83	254	11.1	0
+83	254	11.2	0
+83	254	11.3	0
+83	254	11.4	0
+83	254	11.5	0
+83	254	11.6	0
+83	254	11.7	0
+83	254	11.8	0
+83	254	11.9	0
+83	254	12	0
+83	254	12.1	0
+83	254	12.2	0
+83	254	12.3	0
+83	254	12.4	0
+83	254	12.5	0
+83	254	12.6	0
+83	254	12.7	0
+83	254	12.8	0
+83	254	12.9	0
+83	254	13	0
+83	254	13.1	0
+83	254	13.2	0
+83	254	13.3	0
+83	254	13.4	0
+83	254	13.5	0
+83	254	13.6	0
+83	254	13.7	0
+83	254	13.8	0
+83	254	13.9	0
+83	254	14	0
+83	254	14.1	0
+83	254	14.2	0
+83	254	14.3	0
+83	254	14.4	0
+83	254	14.5	0
+83	254	14.6	0
+83	254	14.7	0
+83	254	14.8	0
+83	254	14.9	0
+83	254	15	0
+83	254	15.1	0
+83	254	15.2	0
+83	254	15.3	0
+83	254	15.4	0
+83	254	15.5	0
+83	254	15.6	0
+83	254	15.7	0
+83	254	15.8	0
+83	254	15.9	0
+83	254	16	0
+83	254	16.1	0
+83	254	16.2	0
+83	254	16.3	0
+83	254	16.4	0
+83	254	16.5	0
+83	254	16.6	0
+83	254	16.7	0
+83	254	16.8	0
+83	254	16.9	0
+83	254	17	0
+83	254	17.1	0
+83	254	17.2	0
+83	254	17.3	0
+83	254	17.4	0
+83	254	17.5	0
+83	254	17.6	0
+83	254	17.7	0
+83	254	17.8	0
+83	254	17.9	0
+83	254	18	0
+83	254	18.1	0
+83	254	18.2	0
+83	254	18.3	0
+83	254	18.4	0
+83	254	18.5	0
+83	254	18.6	0
+83	254	18.7	0
+83	254	18.8	0
+83	254	18.9	0
+83	254	19	0
+83	254	19.1	0
+83	254	19.2	0
+83	254	19.3	0
+83	254	19.4	0
+83	254	19.5	0
+83	254	19.6	0
+83	254	19.7	0
+83	254	19.8	0
+83	254	19.9	0
+83	254	20	0
+83	602	20.1	12640
+83	602	20.2	0
+83	602	20.3	0
+83	602	20.4	0
+83	602	20.5	0
+83	602	20.6	0
+83	602	20.7	0
+83	602	20.8	0
+83	602	20.9	0
+83	602	21	0
+83	602	21.1	0
+83	602	21.2	0
+83	602	21.3	0
+83	602	21.4	0
+83	602	21.5	0
+83	602	21.6	0
+83	602	21.7	0
+83	602	21.8	0
+83	602	21.9	0
+83	602	22	0
+83	602	22.1	0
+83	602	22.2	0
+83	602	22.3	0
+83	602	22.4	0
+83	602	22.5	0
+83	602	22.6	0
+83	602	22.7	0
+83	602	22.8	0
+83	602	22.9	0
+83	602	23	0
+83	602	23.1	0
+83	602	23.2	0
+83	602	23.3	0
+83	602	23.4	0
+83	602	23.5	0
+83	602	23.6	0
+83	602	23.7	0
+83	602	23.8	0
+83	602	23.9	0
+83	602	24	0
+83	602	24.1	0
+83	602	24.2	0
+83	602	24.3	0
+83	602	24.4	0
+83	602	24.5	0
+83	602	24.6	0
+83	602	24.7	0
+83	602	24.8	0
+83	602	24.9	0
+83	602	25	0
+83	602	25.1	0
+83	602	25.2	0
+83	602	25.3	0
+83	602	25.4	0
+83	602	25.5	0
+83	602	25.6	0
+83	602	25.7	0
+83	602	25.8	0
+83	602	25.9	0
+83	602	26	0
+83	602	26.1	0
+83	602	26.2	0
+83	602	26.3	0
+83	602	26.4	0
+83	602	26.5	0
+83	602	26.6	0
+83	602	26.7	0
+83	602	26.8	0
+83	602	26.9	0
+83	602	27	0
+83	602	27.1	0
+83	602	27.2	0
+83	602	27.3	0
+83	602	27.4	0
+83	602	27.5	0
+83	602	27.6	0
+83	602	27.7	0
+83	602	27.8	0
+83	602	27.9	0
+83	602	28	0
+83	602	28.1	0
+83	602	28.2	0
+83	602	28.3	0
+83	602	28.4	0
+83	602	28.5	0
+83	602	28.6	0
+83	602	28.7	0
+83	602	28.8	0
+83	602	28.9	0
+83	602	29	0
+83	602	29.1	0
+83	602	29.2	0
+83	602	29.3	0
+83	602	29.4	0
+83	602	29.5	0
+83	602	29.6	0
+83	602	29.7	0
+83	602	29.8	0
+83	602	29.9	0
+83	602	30	0
+83	602	30.1	0
+83	602	30.2	0
+83	602	30.3	0
+83	602	30.4	0
+83	602	30.5	0
+83	602	30.6	0
+83	602	30.7	0
+83	602	30.8	0
+83	602	30.9	0
+83	602	31	0
+83	602	31.1	0
+83	602	31.2	0
+83	602	31.3	0
+83	602	31.4	0
+83	602	31.5	0
+83	602	31.6	0
+83	602	31.7	0
+83	602	31.8	0
+83	602	31.9	0
+83	602	32	0
+83	602	32.1	0
+83	602	32.2	0
+83	602	32.3	0
+83	602	32.4	0
+83	602	32.5	0
+83	602	32.6	0
+83	602	32.7	0
+83	602	32.8	0
+83	602	32.9	0
+83	602	33	0
+83	602	33.1	0
+83	602	33.2	0
+83	602	33.3	0
+83	602	33.4	0
+83	602	33.5	0
+83	602	33.6	0
+83	602	33.7	0
+83	602	33.8	0
+83	602	33.9	0
+83	602	34	0
+83	602	34.1	0
+83	602	34.2	0
+83	602	34.3	0
+83	602	34.4	0
+83	602	34.5	0
+83	602	34.6	0
+83	602	34.7	0
+83	602	34.8	0
+83	602	34.9	0
+83	602	35	0
+83	602	35.1	0
+83	602	35.2	0
+83	602	35.3	0
+83	602	35.4	0
+83	602	35.5	0
+83	602	35.6	0
+83	602	35.7	0
+83	602	35.8	0
+83	602	35.9	0
+83	602	36	0
+83	602	36.1	0
+83	602	36.2	0
+83	602	36.3	0
+83	602	36.4	0
+83	602	36.5	0
+83	602	36.6	0
+83	602	36.7	0
+83	602	36.8	0
+83	602	36.9	0
+83	602	37	0
+83	602	37.1	0
+83	602	37.2	0
+83	602	37.3	0
+83	602	37.4	0
+83	602	37.5	0
+83	602	37.6	0
+83	602	37.7	0
+83	602	37.8	0
+83	602	37.9	0
+83	602	38	0
+83	602	38.1	0
+83	602	38.2	0
+83	602	38.3	0
+83	602	38.4	0
+83	602	38.5	0
+83	602	38.6	0
+83	602	38.7	0
+83	602	38.8	0
+83	602	38.9	0
+83	602	39	0
+83	602	39.1	0
+83	602	39.2	0
+83	602	39.3	0
+83	602	39.4	0
+83	602	39.5	0
+83	602	39.6	0
+83	602	39.7	0
+83	602	39.8	0
+83	602	39.9	0
+83	602	40	0
+83	602	40.1	0
+83	602	40.2	0
+83	602	40.3	0
+83	602	40.4	0
+83	602	40.5	0
+83	602	40.6	0
+83	602	40.7	0
+83	602	40.8	0
+83	602	40.9	0
+83	602	41	0
+83	602	41.1	0
+83	602	41.2	0
+83	602	41.3	0
+83	602	41.4	0
+83	602	41.5	0
+83	602	41.6	0
+83	602	41.7	0
+83	602	41.8	0
+83	602	41.9	0
+83	602	42	0
+83	602	42.1	0
+83	602	42.2	0
+83	602	42.3	0
+83	602	42.4	0
+83	602	42.5	0
+83	602	42.6	0
+83	602	42.7	0
+83	602	42.8	0
+83	602	42.9	0
+83	602	43	0
+83	602	43.1	0
+83	602	43.2	0
+83	602	43.3	0
+83	602	43.4	0
+83	602	43.5	0
+83	602	43.6	0
+83	602	43.7	0
+83	602	43.8	0
+83	602	43.9	0
+83	602	44	0
+83	602	44.1	0
+83	602	44.2	0
+83	602	44.3	0
+83	602	44.4	0
+83	602	44.5	0
+83	602	44.6	0
+82	254	20.000152182948	1264
+84	254	20.000152182948	1
+84	260	20.000288182948	0
+85	254	20.000152182948	1264
+85	260	20.000288182948	0
+96	266	20.000440182948	0.000152
+12	55	5.1	0
+12	55	5.1	0
+12	260	20.000288182948	1
+12	266	20.000440182948	0
+13	55	5.1	0
+13	55	5.1	0
+13	254	20.000152182948	1
+13	259	20.000288182948	0
+86	254	20.000152182948	6
+20	55	5.1	0
+20	55	5.1	0
+20	238	20.000000182948	0
+20	238	20.000000182948	0
+20	243	20.000152182948	0
+20	243	20.000152182948	0
+20	254	20.000152182948	0
+20	254	20.000152182948	2
+20	259	20.000288182948	2
+20	259	20.000288182948	0
+20	261	20.000288182948	0
+20	261	20.000288182948	0
+20	267	20.000440182948	0
+20	267	20.000440182948	0
+20	293	20.000511548844	0
+20	293	20.000511548844	0
+20	306	20.000663548844	0
+20	306	20.000663548844	0
+20	325	20.000754641204	0
+20	325	20.000754641204	0
+21	55	5.1	15
+90	260	20.000288182948	12000000
+11	55	5.1	0
+11	55	5.1	0
+11	260	20.000288182948	1
+11	266	20.000440182948	0
+71	244	20.000152182948	158
+70	244	20.000152182948	158
+69	244	20.000152182948	158
+95	266	20.000440182948	158
+94	266	20.000440182948	158
+93	266	20.000440182948	158
+68	244	20.000152182948	158
+68	306	20.000663548844	158
+91	260	20.000288182948	158
+81	254	20.000152182948	130
+72	244	20.000152182948	130
+128	306	20.000663548844	158
+127	306	20.000663548844	158
+18	55	5.1	3
+17	55	5.1	0
+17	55	5.1	0
+17	55	5.1	2
+17	261	20.000288182948	3
+17	267	20.000440182948	2
+19	55	5.1	1
+19	238	20.000000182948	3
+19	243	20.000152182948	1
+19	261	20.000288182948	0
+19	267	20.000440182948	1
+19	293	20.000511548844	3
+19	305	20.000663548844	2
+19	325	20.000754641204	1
+92	261	20.000288182948	1
+92	262	20.000288182948	2
+92	266	20.000440182948	1
+92	267	20.000440182948	0
+76	248	20.000152182948	0.000152182948
+76	256	20.000152182948	0.000152182948
+75	248	5.2	0
+75	248	5.3	0
+75	248	5.4	0
+75	248	5.5	0
+75	248	5.6	0
+75	248	5.7	0
+75	248	5.8	0
+75	248	5.9	0
+75	248	6	0
+75	248	6.1	0
+75	248	6.2	0
+75	248	6.3	0
+75	248	6.4	0
+75	248	6.5	0
+75	248	6.6	0
+75	248	6.7	0
+75	248	6.8	0
+75	248	6.9	0
+75	248	7	0
+75	248	7.1	0
+75	248	7.2	0
+75	248	7.3	0
+75	248	7.4	0
+75	248	7.5	0
+75	248	7.6	0
+75	248	7.7	0
+75	248	7.8	0
+75	248	7.9	0
+75	248	8	0
+75	248	8.1	0
+75	248	8.2	0
+75	248	8.3	0
+75	248	8.4	0
+75	248	8.5	0
+75	248	8.6	0
+75	248	8.7	0
+75	248	8.8	0
+75	248	8.9	0
+75	248	9	0
+75	248	9.1	0
+75	248	9.2	0
+75	248	9.3	0
+75	248	9.4	0
+75	248	9.5	0
+75	248	9.6	0
+75	248	9.7	0
+75	248	9.8	0
+75	248	9.9	0
+75	248	10	0
+75	248	10.1	0
+75	248	10.2	0
+75	248	10.3	0
+75	248	10.4	0
+75	248	10.5	0
+75	248	10.6	0
+75	248	10.7	0
+75	248	10.8	0
+75	248	10.9	0
+75	248	11	0
+75	248	11.1	0
+75	248	11.2	0
+75	248	11.3	0
+75	248	11.4	0
+75	248	11.5	0
+75	248	11.6	0
+75	248	11.7	0
+75	248	11.8	0
+75	248	11.9	0
+75	248	12	0
+75	248	12.1	0
+75	248	12.2	0
+75	248	12.3	0
+75	248	12.4	0
+75	248	12.5	0
+75	248	12.6	0
+75	248	12.7	0
+75	248	12.8	0
+75	248	12.9	0
+75	248	13	0
+75	248	13.1	0
+75	248	13.2	0
+75	248	13.3	0
+75	248	13.4	0
+75	248	13.5	0
+75	248	13.6	0
+75	248	13.7	0
+75	248	13.8	0
+75	248	13.9	0
+75	248	14	0
+75	248	14.1	0
+75	248	14.2	0
+75	248	14.3	0
+75	248	14.4	0
+75	248	14.5	0
+75	248	14.6	0
+75	248	14.7	0
+75	248	14.8	0
+75	248	14.9	0
+75	248	15	0
+75	248	15.1	0
+75	248	15.2	0
+75	248	15.3	0
+75	248	15.4	0
+75	248	15.5	0
+75	248	15.6	0
+75	248	15.7	0
+75	248	15.8	0
+75	248	15.9	0
+75	248	16	0
+75	248	16.1	0
+75	248	16.2	0
+75	248	16.3	0
+75	248	16.4	0
+75	248	16.5	0
+75	248	16.6	0
+75	248	16.7	0
+75	248	16.8	0
+75	248	16.9	0
+75	248	17	0
+75	248	17.1	0
+75	248	17.2	0
+75	248	17.3	0
+75	248	17.4	0
+75	248	17.5	0
+75	248	17.6	0
+75	248	17.7	0
+75	248	17.8	0
+75	248	17.9	0
+75	248	18	0
+75	248	18.1	0
+75	248	18.2	0
+75	248	18.3	0
+75	248	18.4	0
+75	248	18.5	0
+75	248	18.6	0
+75	248	18.7	0
+75	248	18.8	0
+75	248	18.9	0
+75	248	19	0
+75	248	19.1	0
+75	248	19.2	0
+75	248	19.3	0
+75	248	19.4	0
+75	248	19.5	0
+75	248	19.6	0
+75	248	19.7	0
+75	248	19.8	0
+75	248	19.9	0
+75	248	20	0
+75	602	20.1	16000
+75	602	20.2	0
+75	602	20.3	0
+75	602	20.4	0
+75	602	20.5	0
+75	602	20.6	0
+75	602	20.7	0
+75	602	20.8	0
+75	602	20.9	0
+75	602	21	0
+75	602	21.1	0
+75	602	21.2	0
+75	602	21.3	0
+75	602	21.4	0
+75	602	21.5	0
+75	602	21.6	0
+75	602	21.7	0
+75	602	21.8	0
+75	602	21.9	0
+75	602	22	0
+75	602	22.1	0
+75	602	22.2	0
+75	602	22.3	0
+75	602	22.4	0
+75	602	22.5	0
+75	602	22.6	0
+75	602	22.7	0
+75	602	22.8	0
+75	602	22.9	0
+75	602	23	0
+75	602	23.1	0
+75	602	23.2	0
+75	602	23.3	0
+75	602	23.4	0
+75	602	23.5	0
+75	602	23.6	0
+75	602	23.7	0
+75	602	23.8	0
+75	602	23.9	0
+75	602	24	0
+75	602	24.1	0
+75	602	24.2	0
+75	602	24.3	0
+75	602	24.4	0
+75	602	24.5	0
+75	602	24.6	0
+75	602	24.7	0
+75	602	24.8	0
+75	602	24.9	0
+75	602	25	0
+75	602	25.1	0
+75	602	25.2	0
+75	602	25.3	0
+75	602	25.4	0
+75	602	25.5	0
+75	602	25.6	0
+75	602	25.7	0
+75	602	25.8	0
+75	602	25.9	0
+75	602	26	0
+75	602	26.1	0
+75	602	26.2	0
+75	602	26.3	0
+75	602	26.4	0
+75	602	26.5	0
+75	602	26.6	0
+75	602	26.7	0
+75	602	26.8	0
+75	602	26.9	0
+75	602	27	0
+75	602	27.1	0
+75	602	27.2	0
+75	602	27.3	0
+75	602	27.4	0
+75	602	27.5	0
+75	602	27.6	0
+75	602	27.7	0
+75	602	27.8	0
+75	602	27.9	0
+75	602	28	0
+75	602	28.1	0
+75	602	28.2	0
+75	602	28.3	0
+75	602	28.4	0
+75	602	28.5	0
+75	602	28.6	0
+75	602	28.7	0
+75	602	28.8	0
+75	602	28.9	0
+75	602	29	0
+75	602	29.1	0
+75	602	29.2	0
+75	602	29.3	0
+75	602	29.4	0
+75	602	29.5	0
+75	602	29.6	0
+75	602	29.7	0
+75	602	29.8	0
+75	602	29.9	0
+75	602	30	0
+75	602	30.1	0
+75	602	30.2	0
+75	602	30.3	0
+75	602	30.4	0
+75	602	30.5	0
+75	602	30.6	0
+75	602	30.7	0
+75	602	30.8	0
+75	602	30.9	0
+75	602	31	0
+75	602	31.1	0
+75	602	31.2	0
+75	602	31.3	0
+75	602	31.4	0
+75	602	31.5	0
+75	602	31.6	0
+75	602	31.7	0
+75	602	31.8	0
+75	602	31.9	0
+75	602	32	0
+75	602	32.1	0
+75	602	32.2	0
+75	602	32.3	0
+75	602	32.4	0
+75	602	32.5	0
+75	602	32.6	0
+75	602	32.7	0
+75	602	32.8	0
+75	602	32.9	0
+75	602	33	0
+75	602	33.1	0
+75	602	33.2	0
+75	602	33.3	0
+75	602	33.4	0
+75	602	33.5	0
+75	602	33.6	0
+75	602	33.7	0
+75	602	33.8	0
+75	602	33.9	0
+75	602	34	0
+75	602	34.1	0
+75	602	34.2	0
+75	602	34.3	0
+75	602	34.4	0
+75	602	34.5	0
+75	602	34.6	0
+75	602	34.7	0
+75	602	34.8	0
+75	602	34.9	0
+75	602	35	0
+75	602	35.1	0
+75	602	35.2	0
+75	602	35.3	0
+75	602	35.4	0
+75	602	35.5	0
+75	602	35.6	0
+75	602	35.7	0
+75	602	35.8	0
+75	602	35.9	0
+75	602	36	0
+75	602	36.1	0
+75	602	36.2	0
+75	602	36.3	0
+75	602	36.4	0
+75	602	36.5	0
+75	602	36.6	0
+75	602	36.7	0
+75	602	36.8	0
+75	602	36.9	0
+75	602	37	0
+75	602	37.1	0
+75	602	37.2	0
+75	602	37.3	0
+75	602	37.4	0
+75	602	37.5	0
+75	602	37.6	0
+75	602	37.7	0
+75	602	37.8	0
+75	602	37.9	0
+75	602	38	0
+75	602	38.1	0
+75	602	38.2	0
+75	602	38.3	0
+75	602	38.4	0
+75	602	38.5	0
+75	602	38.6	0
+75	602	38.7	0
+75	602	38.8	0
+75	602	38.9	0
+75	602	39	0
+75	602	39.1	0
+75	602	39.2	0
+75	602	39.3	0
+75	602	39.4	0
+75	602	39.5	0
+75	602	39.6	0
+75	602	39.7	0
+75	602	39.8	0
+75	602	39.9	0
+75	602	40	0
+75	602	40.1	0
+75	602	40.2	0
+75	602	40.3	0
+75	602	40.4	0
+75	602	40.5	0
+75	602	40.6	0
+75	602	40.7	0
+75	602	40.8	0
+75	602	40.9	0
+75	602	41	0
+75	602	41.1	0
+75	602	41.2	0
+75	602	41.3	0
+75	602	41.4	0
+75	602	41.5	0
+75	602	41.6	0
+75	602	41.7	0
+75	602	41.8	0
+75	602	41.9	0
+75	602	42	0
+75	602	42.1	0
+75	602	42.2	0
+75	602	42.3	0
+75	602	42.4	0
+75	602	42.5	0
+75	602	42.6	0
+75	602	42.7	0
+75	602	42.8	0
+75	602	42.9	0
+75	602	43	0
+75	602	43.1	0
+75	602	43.2	0
+75	602	43.3	0
+75	602	43.4	0
+75	602	43.5	0
+75	602	43.6	0
+75	602	43.7	0
+75	602	43.8	0
+75	602	43.9	0
+75	602	44	0
+75	602	44.1	0
+75	602	44.2	0
+75	602	44.3	0
+75	602	44.4	0
+75	602	44.5	0
+75	602	44.6	0
+74	248	20.000152182948	100
+74	256	20.000152182948	100
+77	248	20.000152182948	100
+107	278	20.000440412076	108
+107	286	20.000440412076	108
+107	340	20.00106884728	108
+112	280	20.000440412076	108
+25	108	10.1	0
+25	278	20.000440412076	1
+25	286	20.000440412076	2
+25	340	20.00106884728	3
+26	108	10.1	0
+27	108	10.1	0
+113	282	20.000440412076	128
+114	282	20.000440412076	128
+123	297	10.2	0
+123	297	10.3	0
+123	297	10.4	0
+123	297	10.5	0
+123	297	10.6	0
+123	297	10.7	0
+123	297	10.8	0
+123	297	10.9	0
+123	297	11	0
+123	297	11.1	0
+123	297	11.2	0
+123	297	11.3	0
+123	297	11.4	0
+123	297	11.5	0
+123	297	11.6	0
+123	297	11.7	0
+123	297	11.8	0
+123	297	11.9	0
+123	297	12	0
+123	297	12.1	0
+123	297	12.2	0
+123	297	12.3	0
+123	297	12.4	0
+123	297	12.5	0
+123	297	12.6	0
+123	297	12.7	0
+123	297	12.8	0
+123	297	12.9	0
+123	297	13	0
+123	297	13.1	0
+123	297	13.2	0
+123	297	13.3	0
+123	297	13.4	0
+123	297	13.5	0
+123	297	13.6	0
+123	297	13.7	0
+123	297	13.8	0
+123	297	13.9	0
+123	297	14	0
+123	297	14.1	0
+123	297	14.2	0
+123	297	14.3	0
+123	297	14.4	0
+123	297	14.5	0
+123	297	14.6	0
+123	297	14.7	0
+123	297	14.8	0
+123	297	14.9	0
+123	297	15	0
+123	297	15.1	0
+123	297	15.2	0
+123	297	15.3	0
+123	297	15.4	0
+123	297	15.5	0
+123	297	15.6	0
+123	297	15.7	0
+123	297	15.8	0
+123	297	15.9	0
+123	297	16	0
+123	297	16.1	0
+123	297	16.2	0
+123	297	16.3	0
+123	297	16.4	0
+123	297	16.5	0
+123	297	16.6	0
+123	297	16.7	0
+123	297	16.8	0
+123	297	16.9	0
+123	297	17	0
+123	297	17.1	0
+123	297	17.2	0
+123	297	17.3	0
+123	297	17.4	0
+123	297	17.5	0
+123	297	17.6	0
+123	297	17.7	0
+123	297	17.8	0
+123	297	17.9	0
+123	297	18	0
+123	297	18.1	0
+123	297	18.2	0
+123	297	18.3	0
+123	297	18.4	0
+123	297	18.5	0
+123	297	18.6	0
+123	297	18.7	0
+123	297	18.8	0
+123	297	18.9	0
+123	297	19	0
+123	297	19.1	0
+123	297	19.2	0
+123	297	19.3	0
+123	297	19.4	0
+123	297	19.5	0
+123	297	19.6	0
+123	297	19.7	0
+123	297	19.8	0
+123	297	19.9	0
+123	297	20	0
+123	650	20.1	12640
+123	650	20.2	0
+123	650	20.3	0
+123	650	20.4	0
+123	650	20.5	0
+123	650	20.6	0
+123	650	20.7	0
+123	650	20.8	0
+123	650	20.9	0
+123	650	21	0
+123	650	21.1	0
+123	650	21.2	0
+123	650	21.3	0
+123	650	21.4	0
+123	650	21.5	0
+123	650	21.6	0
+123	650	21.7	0
+123	650	21.8	0
+123	650	21.9	0
+123	650	22	0
+123	650	22.1	0
+123	650	22.2	0
+123	650	22.3	0
+123	650	22.4	0
+123	650	22.5	0
+123	650	22.6	0
+123	650	22.7	0
+123	650	22.8	0
+123	650	22.9	0
+123	650	23	0
+123	650	23.1	0
+123	650	23.2	0
+123	650	23.3	0
+123	650	23.4	0
+123	650	23.5	0
+123	650	23.6	0
+123	650	23.7	0
+123	650	23.8	0
+123	650	23.9	0
+123	650	24	0
+123	650	24.1	0
+123	650	24.2	0
+123	650	24.3	0
+123	650	24.4	0
+123	650	24.5	0
+123	650	24.6	0
+123	650	24.7	0
+123	650	24.8	0
+123	650	24.9	0
+123	650	25	0
+123	650	25.1	0
+123	650	25.2	0
+123	650	25.3	0
+123	650	25.4	0
+123	650	25.5	0
+123	650	25.6	0
+123	650	25.7	0
+123	650	25.8	0
+123	650	25.9	0
+123	650	26	0
+123	650	26.1	0
+123	650	26.2	0
+123	650	26.3	0
+123	650	26.4	0
+123	650	26.5	0
+123	650	26.6	0
+123	650	26.7	0
+123	650	26.8	0
+123	650	26.9	0
+123	650	27	0
+123	650	27.1	0
+123	650	27.2	0
+123	650	27.3	0
+123	650	27.4	0
+123	650	27.5	0
+123	650	27.6	0
+123	650	27.7	0
+123	650	27.8	0
+123	650	27.9	0
+123	650	28	0
+123	650	28.1	0
+123	650	28.2	0
+123	650	28.3	0
+123	650	28.4	0
+123	650	28.5	0
+123	650	28.6	0
+123	650	28.7	0
+123	650	28.8	0
+123	650	28.9	0
+123	650	29	0
+123	650	29.1	0
+123	650	29.2	0
+123	650	29.3	0
+123	650	29.4	0
+123	650	29.5	0
+123	650	29.6	0
+123	650	29.7	0
+123	650	29.8	0
+123	650	29.9	0
+123	650	30	0
+123	650	30.1	0
+123	650	30.2	0
+123	650	30.3	0
+123	650	30.4	0
+123	650	30.5	0
+123	650	30.6	0
+123	650	30.7	0
+123	650	30.8	0
+123	650	30.9	0
+123	650	31	0
+123	650	31.1	0
+123	650	31.2	0
+123	650	31.3	0
+123	650	31.4	0
+123	650	31.5	0
+123	650	31.6	0
+123	650	31.7	0
+123	650	31.8	0
+123	650	31.9	0
+123	650	32	0
+123	650	32.1	0
+123	650	32.2	0
+123	650	32.3	0
+123	650	32.4	0
+123	650	32.5	0
+123	650	32.6	0
+123	650	32.7	0
+123	650	32.8	0
+123	650	32.9	0
+123	650	33	0
+123	650	33.1	0
+123	650	33.2	0
+123	650	33.3	0
+123	650	33.4	0
+123	650	33.5	0
+123	650	33.6	0
+123	650	33.7	0
+123	650	33.8	0
+123	650	33.9	0
+123	650	34	0
+123	650	34.1	0
+123	650	34.2	0
+123	650	34.3	0
+123	650	34.4	0
+123	650	34.5	0
+123	650	34.6	0
+123	650	34.7	0
+123	650	34.8	0
+123	650	34.9	0
+123	650	35	0
+123	650	35.1	0
+123	650	35.2	0
+123	650	35.3	0
+123	650	35.4	0
+123	650	35.5	0
+123	650	35.6	0
+123	650	35.7	0
+123	650	35.8	0
+123	650	35.9	0
+123	650	36	0
+123	650	36.1	0
+123	650	36.2	0
+123	650	36.3	0
+123	650	36.4	0
+123	650	36.5	0
+123	650	36.6	0
+123	650	36.7	0
+123	650	36.8	0
+123	650	36.9	0
+123	650	37	0
+123	650	37.1	0
+123	650	37.2	0
+123	650	37.3	0
+123	650	37.4	0
+123	650	37.5	0
+123	650	37.6	0
+123	650	37.7	0
+123	650	37.8	0
+123	650	37.9	0
+123	650	38	0
+123	650	38.1	0
+123	650	38.2	0
+123	650	38.3	0
+123	650	38.4	0
+123	650	38.5	0
+123	650	38.6	0
+123	650	38.7	0
+123	650	38.8	0
+123	650	38.9	0
+123	650	39	0
+123	650	39.1	0
+123	650	39.2	0
+123	650	39.3	0
+123	650	39.4	0
+123	650	39.5	0
+123	650	39.6	0
+123	650	39.7	0
+123	650	39.8	0
+123	650	39.9	0
+123	650	40	0
+123	650	40.1	0
+123	650	40.2	0
+123	650	40.3	0
+123	650	40.4	0
+123	650	40.5	0
+123	650	40.6	0
+123	650	40.7	0
+123	650	40.8	0
+123	650	40.9	0
+123	650	41	0
+123	650	41.1	0
+123	650	41.2	0
+123	650	41.3	0
+123	650	41.4	0
+123	650	41.5	0
+123	650	41.6	0
+123	650	41.7	0
+123	650	41.8	0
+123	650	41.9	0
+123	650	42	0
+123	650	42.1	0
+123	650	42.2	0
+123	650	42.3	0
+123	650	42.4	0
+123	650	42.5	0
+123	650	42.6	0
+123	650	42.7	0
+123	650	42.8	0
+123	650	42.9	0
+123	650	43	0
+123	650	43.1	0
+123	650	43.2	0
+123	650	43.3	0
+123	650	43.4	0
+123	650	43.5	0
+123	650	43.6	0
+123	650	43.7	0
+123	650	43.8	0
+123	650	43.9	0
+123	650	44	0
+123	650	44.1	0
+123	650	44.2	0
+123	650	44.3	0
+123	650	44.4	0
+123	650	44.5	0
+123	650	44.6	0
+123	650	44.7	0
+123	650	44.8	0
+123	650	44.9	0
+123	650	45	0
+123	650	45.1	0
+123	650	45.2	0
+123	650	45.3	0
+123	650	45.4	0
+123	650	45.5	0
+123	650	45.6	0
+123	650	45.7	0
+123	650	45.8	0
+123	650	45.9	0
+123	650	46	0
+123	650	46.1	0
+123	650	46.2	0
+123	650	46.3	0
+123	650	46.4	0
+123	650	46.5	0
+123	650	46.6	0
+123	650	46.7	0
+123	650	46.8	0
+123	650	46.9	0
+123	650	47	0
+123	650	47.1	0
+123	650	47.2	0
+123	650	47.3	0
+123	650	47.4	0
+123	650	47.5	0
+123	650	47.6	0
+123	650	47.7	0
+123	650	47.8	0
+123	650	47.9	0
+123	650	48	0
+123	650	48.1	0
+123	650	48.2	0
+123	650	48.3	0
+123	650	48.4	0
+123	650	48.5	0
+123	650	48.6	0
+123	650	48.7	0
+123	650	48.8	0
+123	650	48.9	0
+123	650	49	0
+123	650	49.1	0
+123	650	49.2	0
+123	650	49.3	0
+123	650	49.4	0
+122	297	20.000602412076	1264
+121	297	20.000602412076	0.000162
+117	285	10.2	0
+117	285	10.3	0
+117	285	10.4	0
+117	285	10.5	0
+117	285	10.6	0
+117	285	10.7	0
+117	285	10.8	0
+117	285	10.9	0
+117	285	11	0
+117	285	11.1	0
+117	285	11.2	0
+117	285	11.3	0
+117	285	11.4	0
+117	285	11.5	0
+117	285	11.6	0
+117	285	11.7	0
+117	285	11.8	0
+117	285	11.9	0
+117	285	12	0
+117	285	12.1	0
+117	285	12.2	0
+117	285	12.3	0
+117	285	12.4	0
+117	285	12.5	0
+117	285	12.6	0
+117	285	12.7	0
+117	285	12.8	0
+117	285	12.9	0
+117	285	13	0
+117	285	13.1	0
+117	285	13.2	0
+117	285	13.3	0
+117	285	13.4	0
+117	285	13.5	0
+117	285	13.6	0
+117	285	13.7	0
+117	285	13.8	0
+117	285	13.9	0
+117	285	14	0
+117	285	14.1	0
+117	285	14.2	0
+117	285	14.3	0
+117	285	14.4	0
+117	285	14.5	0
+117	285	14.6	0
+117	285	14.7	0
+117	285	14.8	0
+117	285	14.9	0
+117	285	15	0
+117	285	15.1	0
+117	285	15.2	0
+117	285	15.3	0
+117	285	15.4	0
+117	285	15.5	0
+117	285	15.6	0
+117	285	15.7	0
+117	285	15.8	0
+117	285	15.9	0
+117	285	16	0
+117	285	16.1	0
+117	285	16.2	0
+117	285	16.3	0
+117	285	16.4	0
+117	285	16.5	0
+117	285	16.6	0
+117	285	16.7	0
+117	285	16.8	0
+117	285	16.9	0
+117	285	17	0
+117	285	17.1	0
+117	285	17.2	0
+117	285	17.3	0
+117	285	17.4	0
+117	285	17.5	0
+117	285	17.6	0
+117	285	17.7	0
+117	285	17.8	0
+117	285	17.9	0
+117	285	18	0
+117	285	18.1	0
+117	285	18.2	0
+117	285	18.3	0
+117	285	18.4	0
+117	285	18.5	0
+117	285	18.6	0
+117	285	18.7	0
+117	285	18.8	0
+117	285	18.9	0
+117	285	19	0
+117	285	19.1	0
+117	285	19.2	0
+117	285	19.3	0
+117	285	19.4	0
+117	285	19.5	0
+117	285	19.6	0
+117	285	19.7	0
+117	285	19.8	0
+117	285	19.9	0
+117	285	20	0
+117	650	20.1	12640
+117	650	20.2	0
+117	650	20.3	0
+117	650	20.4	0
+117	650	20.5	0
+117	650	20.6	0
+117	650	20.7	0
+117	650	20.8	0
+117	650	20.9	0
+117	650	21	0
+117	650	21.1	0
+117	650	21.2	0
+117	650	21.3	0
+117	650	21.4	0
+117	650	21.5	0
+117	650	21.6	0
+117	650	21.7	0
+117	650	21.8	0
+117	650	21.9	0
+117	650	22	0
+117	650	22.1	0
+117	650	22.2	0
+117	650	22.3	0
+117	650	22.4	0
+117	650	22.5	0
+117	650	22.6	0
+117	650	22.7	0
+117	650	22.8	0
+117	650	22.9	0
+117	650	23	0
+117	650	23.1	0
+117	650	23.2	0
+117	650	23.3	0
+117	650	23.4	0
+117	650	23.5	0
+117	650	23.6	0
+117	650	23.7	0
+117	650	23.8	0
+117	650	23.9	0
+117	650	24	0
+117	650	24.1	0
+117	650	24.2	0
+117	650	24.3	0
+117	650	24.4	0
+117	650	24.5	0
+117	650	24.6	0
+117	650	24.7	0
+117	650	24.8	0
+117	650	24.9	0
+117	650	25	0
+117	650	25.1	0
+117	650	25.2	0
+117	650	25.3	0
+117	650	25.4	0
+117	650	25.5	0
+117	650	25.6	0
+117	650	25.7	0
+117	650	25.8	0
+117	650	25.9	0
+117	650	26	0
+117	650	26.1	0
+117	650	26.2	0
+117	650	26.3	0
+117	650	26.4	0
+117	650	26.5	0
+117	650	26.6	0
+117	650	26.7	0
+117	650	26.8	0
+117	650	26.9	0
+117	650	27	0
+117	650	27.1	0
+117	650	27.2	0
+117	650	27.3	0
+117	650	27.4	0
+117	650	27.5	0
+117	650	27.6	0
+117	650	27.7	0
+117	650	27.8	0
+117	650	27.9	0
+117	650	28	0
+117	650	28.1	0
+117	650	28.2	0
+117	650	28.3	0
+117	650	28.4	0
+117	650	28.5	0
+117	650	28.6	0
+117	650	28.7	0
+117	650	28.8	0
+117	650	28.9	0
+117	650	29	0
+117	650	29.1	0
+117	650	29.2	0
+117	650	29.3	0
+117	650	29.4	0
+117	650	29.5	0
+117	650	29.6	0
+117	650	29.7	0
+117	650	29.8	0
+117	650	29.9	0
+117	650	30	0
+117	650	30.1	0
+117	650	30.2	0
+117	650	30.3	0
+117	650	30.4	0
+117	650	30.5	0
+117	650	30.6	0
+117	650	30.7	0
+117	650	30.8	0
+117	650	30.9	0
+117	650	31	0
+117	650	31.1	0
+117	650	31.2	0
+117	650	31.3	0
+117	650	31.4	0
+117	650	31.5	0
+117	650	31.6	0
+117	650	31.7	0
+117	650	31.8	0
+117	650	31.9	0
+117	650	32	0
+117	650	32.1	0
+117	650	32.2	0
+117	650	32.3	0
+117	650	32.4	0
+117	650	32.5	0
+117	650	32.6	0
+117	650	32.7	0
+117	650	32.8	0
+117	650	32.9	0
+117	650	33	0
+117	650	33.1	0
+117	650	33.2	0
+117	650	33.3	0
+117	650	33.4	0
+117	650	33.5	0
+117	650	33.6	0
+117	650	33.7	0
+117	650	33.8	0
+117	650	33.9	0
+117	650	34	0
+117	650	34.1	0
+117	650	34.2	0
+117	650	34.3	0
+117	650	34.4	0
+117	650	34.5	0
+117	650	34.6	0
+117	650	34.7	0
+117	650	34.8	0
+117	650	34.9	0
+117	650	35	0
+117	650	35.1	0
+117	650	35.2	0
+117	650	35.3	0
+117	650	35.4	0
+117	650	35.5	0
+117	650	35.6	0
+117	650	35.7	0
+117	650	35.8	0
+117	650	35.9	0
+117	650	36	0
+117	650	36.1	0
+117	650	36.2	0
+117	650	36.3	0
+117	650	36.4	0
+117	650	36.5	0
+117	650	36.6	0
+117	650	36.7	0
+117	650	36.8	0
+117	650	36.9	0
+117	650	37	0
+117	650	37.1	0
+117	650	37.2	0
+117	650	37.3	0
+117	650	37.4	0
+117	650	37.5	0
+117	650	37.6	0
+117	650	37.7	0
+117	650	37.8	0
+117	650	37.9	0
+117	650	38	0
+117	650	38.1	0
+117	650	38.2	0
+117	650	38.3	0
+117	650	38.4	0
+117	650	38.5	0
+117	650	38.6	0
+117	650	38.7	0
+117	650	38.8	0
+117	650	38.9	0
+117	650	39	0
+117	650	39.1	0
+117	650	39.2	0
+117	650	39.3	0
+117	650	39.4	0
+117	650	39.5	0
+117	650	39.6	0
+117	650	39.7	0
+117	650	39.8	0
+117	650	39.9	0
+117	650	40	0
+117	650	40.1	0
+117	650	40.2	0
+117	650	40.3	0
+117	650	40.4	0
+117	650	40.5	0
+117	650	40.6	0
+117	650	40.7	0
+117	650	40.8	0
+117	650	40.9	0
+117	650	41	0
+117	650	41.1	0
+117	650	41.2	0
+117	650	41.3	0
+117	650	41.4	0
+117	650	41.5	0
+117	650	41.6	0
+117	650	41.7	0
+117	650	41.8	0
+117	650	41.9	0
+117	650	42	0
+117	650	42.1	0
+117	650	42.2	0
+117	650	42.3	0
+117	650	42.4	0
+117	650	42.5	0
+117	650	42.6	0
+117	650	42.7	0
+117	650	42.8	0
+117	650	42.9	0
+117	650	43	0
+117	650	43.1	0
+117	650	43.2	0
+117	650	43.3	0
+117	650	43.4	0
+117	650	43.5	0
+117	650	43.6	0
+117	650	43.7	0
+117	650	43.8	0
+117	650	43.9	0
+117	650	44	0
+117	650	44.1	0
+117	650	44.2	0
+117	650	44.3	0
+117	650	44.4	0
+117	650	44.5	0
+117	650	44.6	0
+117	650	44.7	0
+117	650	44.8	0
+117	650	44.9	0
+117	650	45	0
+117	650	45.1	0
+117	650	45.2	0
+117	650	45.3	0
+117	650	45.4	0
+117	650	45.5	0
+117	650	45.6	0
+117	650	45.7	0
+117	650	45.8	0
+117	650	45.9	0
+117	650	46	0
+117	650	46.1	0
+117	650	46.2	0
+117	650	46.3	0
+117	650	46.4	0
+117	650	46.5	0
+117	650	46.6	0
+117	650	46.7	0
+117	650	46.8	0
+117	650	46.9	0
+117	650	47	0
+117	650	47.1	0
+117	650	47.2	0
+117	650	47.3	0
+117	650	47.4	0
+117	650	47.5	0
+117	650	47.6	0
+117	650	47.7	0
+117	650	47.8	0
+117	650	47.9	0
+117	650	48	0
+117	650	48.1	0
+117	650	48.2	0
+117	650	48.3	0
+117	650	48.4	0
+117	650	48.5	0
+117	650	48.6	0
+117	650	48.7	0
+117	650	48.8	0
+117	650	48.9	0
+117	650	49	0
+117	650	49.1	0
+117	650	49.2	0
+117	650	49.3	0
+117	650	49.4	0
+116	285	20.000440412076	1264
+118	285	20.000440412076	1
+118	297	20.000602412076	0
+119	285	20.000440412076	1264
+119	297	20.000602412076	0
+132	309	20.000754412076	0.000152
+23	108	10.1	0
+23	108	10.1	0
+23	297	20.000602412076	1
+23	309	20.000754412076	0
+24	108	10.1	0
+24	108	10.1	0
+24	285	20.000440412076	1
+24	296	20.000602412076	0
+120	285	20.000440412076	8
+31	108	10.1	0
+31	108	10.1	0
+31	264	20.000288412076	0
+31	264	20.000288412076	0
+31	274	20.000440412076	0
+31	274	20.000440412076	0
+31	285	20.000440412076	0
+31	285	20.000440412076	2
+31	296	20.000602412076	2
+31	296	20.000602412076	0
+31	298	20.000602412076	0
+31	298	20.000602412076	0
+31	310	20.000754412076	0
+31	310	20.000754412076	0
+31	331	20.00091684728	0
+31	331	20.00091684728	0
+31	336	20.00106884728	0
+31	336	20.00106884728	0
+32	108	10.1	15
+124	297	20.000602412076	12000000
+22	108	10.1	0
+22	108	10.1	0
+22	297	20.000602412076	1
+22	309	20.000754412076	0
+105	275	20.000440412076	158
+105	337	20.00106884728	158
+104	275	20.000440412076	158
+104	337	20.00106884728	158
+103	275	20.000440412076	158
+103	337	20.00106884728	158
+131	309	20.000754412076	158
+130	309	20.000754412076	158
+129	309	20.000754412076	158
+102	275	20.000440412076	158
+102	337	20.00106884728	158
+125	297	20.000602412076	158
+115	285	20.000440412076	130
+106	275	20.000440412076	130
+106	337	20.00106884728	130
+29	108	10.1	3
+28	108	10.1	0
+28	108	10.1	0
+28	108	10.1	2
+28	298	20.000602412076	3
+28	310	20.000754412076	2
+30	108	10.1	1
+30	264	20.000288412076	3
+30	274	20.000440412076	1
+30	298	20.000602412076	0
+30	310	20.000754412076	1
+30	331	20.00091684728	3
+30	336	20.00106884728	1
+126	298	20.000602412076	1
+126	299	20.000602412076	2
+126	309	20.000754412076	1
+126	310	20.000754412076	0
+110	279	20.000440412076	0.000440412076
+110	287	20.000440412076	0.000440412076
+110	341	20.00106884728	0.00106884728
+109	279	10.2	0
+109	279	10.3	0
+109	279	10.4	0
+109	279	10.5	0
+109	279	10.6	0
+109	279	10.7	0
+109	279	10.8	0
+109	279	10.9	0
+109	279	11	0
+109	279	11.1	0
+109	279	11.2	0
+109	279	11.3	0
+109	279	11.4	0
+109	279	11.5	0
+109	279	11.6	0
+109	279	11.7	0
+109	279	11.8	0
+109	279	11.9	0
+109	279	12	0
+109	279	12.1	0
+109	279	12.2	0
+109	279	12.3	0
+109	279	12.4	0
+109	279	12.5	0
+109	279	12.6	0
+109	279	12.7	0
+109	279	12.8	0
+109	279	12.9	0
+109	279	13	0
+109	279	13.1	0
+109	279	13.2	0
+109	279	13.3	0
+109	279	13.4	0
+109	279	13.5	0
+109	279	13.6	0
+109	279	13.7	0
+109	279	13.8	0
+109	279	13.9	0
+109	279	14	0
+109	279	14.1	0
+109	279	14.2	0
+109	279	14.3	0
+109	279	14.4	0
+109	279	14.5	0
+109	279	14.6	0
+109	279	14.7	0
+109	279	14.8	0
+109	279	14.9	0
+109	279	15	0
+109	279	15.1	0
+109	279	15.2	0
+109	279	15.3	0
+109	279	15.4	0
+109	279	15.5	0
+109	279	15.6	0
+109	279	15.7	0
+109	279	15.8	0
+109	279	15.9	0
+109	279	16	0
+109	279	16.1	0
+109	279	16.2	0
+109	279	16.3	0
+109	279	16.4	0
+109	279	16.5	0
+109	279	16.6	0
+109	279	16.7	0
+109	279	16.8	0
+109	279	16.9	0
+109	279	17	0
+109	279	17.1	0
+109	279	17.2	0
+109	279	17.3	0
+109	279	17.4	0
+109	279	17.5	0
+109	279	17.6	0
+109	279	17.7	0
+109	279	17.8	0
+109	279	17.9	0
+109	279	18	0
+109	279	18.1	0
+109	279	18.2	0
+109	279	18.3	0
+109	279	18.4	0
+109	279	18.5	0
+109	279	18.6	0
+109	279	18.7	0
+109	279	18.8	0
+109	279	18.9	0
+109	279	19	0
+109	279	19.1	0
+109	279	19.2	0
+109	279	19.3	0
+109	279	19.4	0
+109	279	19.5	0
+109	279	19.6	0
+109	279	19.7	0
+109	279	19.8	0
+109	279	19.9	0
+109	279	20	0
+109	650	20.1	24000
+109	650	20.2	0
+109	650	20.3	0
+109	650	20.4	0
+109	650	20.5	0
+109	650	20.6	0
+109	650	20.7	0
+109	650	20.8	0
+109	650	20.9	0
+109	650	21	0
+109	650	21.1	0
+109	650	21.2	0
+109	650	21.3	0
+109	650	21.4	0
+109	650	21.5	0
+109	650	21.6	0
+109	650	21.7	0
+109	650	21.8	0
+109	650	21.9	0
+109	650	22	0
+109	650	22.1	0
+109	650	22.2	0
+109	650	22.3	0
+109	650	22.4	0
+109	650	22.5	0
+109	650	22.6	0
+109	650	22.7	0
+109	650	22.8	0
+109	650	22.9	0
+109	650	23	0
+109	650	23.1	0
+109	650	23.2	0
+109	650	23.3	0
+109	650	23.4	0
+109	650	23.5	0
+109	650	23.6	0
+109	650	23.7	0
+109	650	23.8	0
+109	650	23.9	0
+109	650	24	0
+109	650	24.1	0
+109	650	24.2	0
+109	650	24.3	0
+109	650	24.4	0
+109	650	24.5	0
+109	650	24.6	0
+109	650	24.7	0
+109	650	24.8	0
+109	650	24.9	0
+109	650	25	0
+109	650	25.1	0
+109	650	25.2	0
+109	650	25.3	0
+109	650	25.4	0
+109	650	25.5	0
+109	650	25.6	0
+109	650	25.7	0
+109	650	25.8	0
+109	650	25.9	0
+109	650	26	0
+109	650	26.1	0
+109	650	26.2	0
+109	650	26.3	0
+109	650	26.4	0
+109	650	26.5	0
+109	650	26.6	0
+109	650	26.7	0
+109	650	26.8	0
+109	650	26.9	0
+109	650	27	0
+109	650	27.1	0
+109	650	27.2	0
+109	650	27.3	0
+109	650	27.4	0
+109	650	27.5	0
+109	650	27.6	0
+109	650	27.7	0
+109	650	27.8	0
+109	650	27.9	0
+109	650	28	0
+109	650	28.1	0
+109	650	28.2	0
+109	650	28.3	0
+109	650	28.4	0
+109	650	28.5	0
+109	650	28.6	0
+109	650	28.7	0
+109	650	28.8	0
+109	650	28.9	0
+109	650	29	0
+109	650	29.1	0
+109	650	29.2	0
+109	650	29.3	0
+109	650	29.4	0
+109	650	29.5	0
+109	650	29.6	0
+109	650	29.7	0
+109	650	29.8	0
+109	650	29.9	0
+109	650	30	0
+109	650	30.1	0
+109	650	30.2	0
+109	650	30.3	0
+109	650	30.4	0
+109	650	30.5	0
+109	650	30.6	0
+109	650	30.7	0
+109	650	30.8	0
+109	650	30.9	0
+109	650	31	0
+109	650	31.1	0
+109	650	31.2	0
+109	650	31.3	0
+109	650	31.4	0
+109	650	31.5	0
+109	650	31.6	0
+109	650	31.7	0
+109	650	31.8	0
+109	650	31.9	0
+109	650	32	0
+109	650	32.1	0
+109	650	32.2	0
+109	650	32.3	0
+109	650	32.4	0
+109	650	32.5	0
+109	650	32.6	0
+109	650	32.7	0
+109	650	32.8	0
+109	650	32.9	0
+109	650	33	0
+109	650	33.1	0
+109	650	33.2	0
+109	650	33.3	0
+109	650	33.4	0
+109	650	33.5	0
+109	650	33.6	0
+109	650	33.7	0
+109	650	33.8	0
+109	650	33.9	0
+109	650	34	0
+109	650	34.1	0
+109	650	34.2	0
+109	650	34.3	0
+109	650	34.4	0
+109	650	34.5	0
+109	650	34.6	0
+109	650	34.7	0
+109	650	34.8	0
+109	650	34.9	0
+109	650	35	0
+109	650	35.1	0
+109	650	35.2	0
+109	650	35.3	0
+109	650	35.4	0
+109	650	35.5	0
+109	650	35.6	0
+109	650	35.7	0
+109	650	35.8	0
+109	650	35.9	0
+109	650	36	0
+109	650	36.1	0
+109	650	36.2	0
+109	650	36.3	0
+109	650	36.4	0
+109	650	36.5	0
+109	650	36.6	0
+109	650	36.7	0
+109	650	36.8	0
+109	650	36.9	0
+109	650	37	0
+109	650	37.1	0
+109	650	37.2	0
+109	650	37.3	0
+109	650	37.4	0
+109	650	37.5	0
+109	650	37.6	0
+109	650	37.7	0
+109	650	37.8	0
+109	650	37.9	0
+109	650	38	0
+109	650	38.1	0
+109	650	38.2	0
+109	650	38.3	0
+109	650	38.4	0
+109	650	38.5	0
+109	650	38.6	0
+109	650	38.7	0
+109	650	38.8	0
+109	650	38.9	0
+109	650	39	0
+109	650	39.1	0
+109	650	39.2	0
+109	650	39.3	0
+109	650	39.4	0
+109	650	39.5	0
+109	650	39.6	0
+109	650	39.7	0
+109	650	39.8	0
+109	650	39.9	0
+109	650	40	0
+109	650	40.1	0
+109	650	40.2	0
+109	650	40.3	0
+109	650	40.4	0
+109	650	40.5	0
+109	650	40.6	0
+109	650	40.7	0
+109	650	40.8	0
+109	650	40.9	0
+109	650	41	0
+109	650	41.1	0
+109	650	41.2	0
+109	650	41.3	0
+109	650	41.4	0
+109	650	41.5	0
+109	650	41.6	0
+109	650	41.7	0
+109	650	41.8	0
+109	650	41.9	0
+109	650	42	0
+109	650	42.1	0
+109	650	42.2	0
+109	650	42.3	0
+109	650	42.4	0
+109	650	42.5	0
+109	650	42.6	0
+109	650	42.7	0
+109	650	42.8	0
+109	650	42.9	0
+109	650	43	0
+109	650	43.1	0
+109	650	43.2	0
+109	650	43.3	0
+109	650	43.4	0
+109	650	43.5	0
+109	650	43.6	0
+109	650	43.7	0
+109	650	43.8	0
+109	650	43.9	0
+109	650	44	0
+109	650	44.1	0
+109	650	44.2	0
+109	650	44.3	0
+109	650	44.4	0
+109	650	44.5	0
+109	650	44.6	0
+109	650	44.7	0
+109	650	44.8	0
+109	650	44.9	0
+109	650	45	0
+109	650	45.1	0
+109	650	45.2	0
+109	650	45.3	0
+109	650	45.4	0
+109	650	45.5	0
+109	650	45.6	0
+109	650	45.7	0
+109	650	45.8	0
+109	650	45.9	0
+109	650	46	0
+109	650	46.1	0
+109	650	46.2	0
+109	650	46.3	0
+109	650	46.4	0
+109	650	46.5	0
+109	650	46.6	0
+109	650	46.7	0
+109	650	46.8	0
+109	650	46.9	0
+109	650	47	0
+109	650	47.1	0
+109	650	47.2	0
+109	650	47.3	0
+109	650	47.4	0
+109	650	47.5	0
+109	650	47.6	0
+109	650	47.7	0
+109	650	47.8	0
+109	650	47.9	0
+109	650	48	0
+109	650	48.1	0
+109	650	48.2	0
+109	650	48.3	0
+109	650	48.4	0
+109	650	48.5	0
+109	650	48.6	0
+109	650	48.7	0
+109	650	48.8	0
+109	650	48.9	0
+109	650	49	0
+109	650	49.1	0
+109	650	49.2	0
+109	650	49.3	0
+109	650	49.4	0
+108	279	20.000440412076	100
+108	287	20.000440412076	100
+108	341	20.00106884728	100
+111	279	20.000440412076	100
+54	224	20	108
+54	232	20	108
+54	272	20.000440365896	108
+45	218	20	108
+45	226	20	108
+3	2	0.1	0
+3	224	20	1
+3	232	20	2
+3	272	20.000440365896	3
+4	2	0.1	0
+5	2	0.1	0
+46	220	20	128
+46	228	20	128
+47	220	20	128
+47	228	20	128
+60	235	0.2	0
+60	235	0.3	0
+60	235	0.4	0
+60	235	0.5	0
+60	235	0.6	0
+60	235	0.7	0
+60	235	0.8	0
+60	235	0.9	0
+60	235	1	0
+60	235	1.1	0
+60	235	1.2	0
+60	235	1.3	0
+60	235	1.4	0
+60	235	1.5	0
+60	235	1.6	0
+60	235	1.7	0
+60	235	1.8	0
+60	235	1.9	0
+60	235	2	0
+60	235	2.1	0
+60	235	2.2	0
+60	235	2.3	0
+60	235	2.4	0
+60	235	2.5	0
+60	235	2.6	0
+60	235	2.7	0
+60	235	2.8	0
+60	235	2.9	0
+60	235	3	0
+60	235	3.1	0
+60	235	3.2	0
+60	235	3.3	0
+60	235	3.4	0
+60	235	3.5	0
+60	235	3.6	0
+60	235	3.7	0
+60	235	3.8	0
+60	235	3.9	0
+60	235	4	0
+60	235	4.1	0
+60	235	4.2	0
+60	235	4.3	0
+60	235	4.4	0
+60	235	4.5	0
+60	235	4.6	0
+60	235	4.7	0
+60	235	4.8	0
+60	235	4.9	0
+60	235	5	0
+60	235	5.1	0
+60	235	5.2	0
+60	235	5.3	0
+60	235	5.4	0
+60	235	5.5	0
+60	235	5.6	0
+60	235	5.7	0
+60	235	5.8	0
+60	235	5.9	0
+60	235	6	0
+60	235	6.1	0
+60	235	6.2	0
+60	235	6.3	0
+60	235	6.4	0
+60	235	6.5	0
+60	235	6.6	0
+60	235	6.7	0
+60	235	6.8	0
+60	235	6.9	0
+60	235	7	0
+60	235	7.1	0
+60	235	7.2	0
+60	235	7.3	0
+60	235	7.4	0
+60	235	7.5	0
+60	235	7.6	0
+60	235	7.7	0
+60	235	7.8	0
+60	235	7.9	0
+60	235	8	0
+60	235	8.1	0
+60	235	8.2	0
+60	235	8.3	0
+60	235	8.4	0
+60	235	8.5	0
+60	235	8.6	0
+60	235	8.7	0
+60	235	8.8	0
+60	235	8.9	0
+60	235	9	0
+60	235	9.1	0
+60	235	9.2	0
+60	235	9.3	0
+60	235	9.4	0
+60	235	9.5	0
+60	235	9.6	0
+60	235	9.7	0
+60	235	9.8	0
+60	235	9.9	0
+60	235	10	0
+60	235	10.1	0
+60	235	10.2	0
+60	235	10.3	0
+60	235	10.4	0
+60	235	10.5	0
+60	235	10.6	0
+60	235	10.7	0
+60	235	10.8	0
+60	235	10.9	0
+60	235	11	0
+60	235	11.1	0
+60	235	11.2	0
+60	235	11.3	0
+60	235	11.4	0
+60	235	11.5	0
+60	235	11.6	0
+60	235	11.7	0
+60	235	11.8	0
+60	235	11.9	0
+60	235	12	0
+60	235	12.1	0
+60	235	12.2	0
+60	235	12.3	0
+60	235	12.4	0
+60	235	12.5	0
+60	235	12.6	0
+60	235	12.7	0
+60	235	12.8	0
+60	235	12.9	0
+60	235	13	0
+60	235	13.1	0
+60	235	13.2	0
+60	235	13.3	0
+60	235	13.4	0
+60	235	13.5	0
+60	235	13.6	0
+60	235	13.7	0
+60	235	13.8	0
+60	235	13.9	0
+60	235	14	0
+60	235	14.1	0
+60	235	14.2	0
+60	235	14.3	0
+60	235	14.4	0
+60	235	14.5	0
+60	235	14.6	0
+60	235	14.7	0
+60	235	14.8	0
+60	235	14.9	0
+60	235	15	0
+60	235	15.1	0
+60	235	15.2	0
+60	235	15.3	0
+60	235	15.4	0
+60	235	15.5	0
+60	235	15.6	0
+60	235	15.7	0
+60	235	15.8	0
+60	235	15.9	0
+60	235	16	0
+60	235	16.1	0
+60	235	16.2	0
+60	235	16.3	0
+60	235	16.4	0
+60	235	16.5	0
+60	235	16.6	0
+60	235	16.7	0
+60	235	16.8	0
+60	235	16.9	0
+60	235	17	0
+60	235	17.1	0
+60	235	17.2	0
+60	235	17.3	0
+60	235	17.4	0
+60	235	17.5	0
+60	235	17.6	0
+60	235	17.7	0
+60	235	17.8	0
+60	235	17.9	0
+60	235	18	0
+60	235	18.1	0
+60	235	18.2	0
+60	235	18.3	0
+60	235	18.4	0
+60	235	18.5	0
+60	235	18.6	0
+60	235	18.7	0
+60	235	18.8	0
+60	235	18.9	0
+60	235	19	0
+60	235	19.1	0
+60	235	19.2	0
+60	235	19.3	0
+60	235	19.4	0
+60	235	19.5	0
+60	235	19.6	0
+60	235	19.7	0
+60	235	19.8	0
+60	235	19.9	0
+60	235	20	0
+60	730	20.1	25280
+60	730	20.2	0
+60	730	20.3	0
+60	730	20.4	0
+60	730	20.5	0
+60	730	20.6	0
+60	730	20.7	0
+60	730	20.8	0
+60	730	20.9	0
+60	730	21	0
+60	730	21.1	0
+60	730	21.2	0
+60	730	21.3	0
+60	730	21.4	0
+60	730	21.5	0
+60	730	21.6	0
+60	730	21.7	0
+60	730	21.8	0
+60	730	21.9	0
+60	730	22	0
+60	730	22.1	0
+60	730	22.2	0
+60	730	22.3	0
+60	730	22.4	0
+60	730	22.5	0
+60	730	22.6	0
+60	730	22.7	0
+60	730	22.8	0
+60	730	22.9	0
+60	730	23	0
+60	730	23.1	0
+60	730	23.2	0
+60	730	23.3	0
+60	730	23.4	0
+60	730	23.5	0
+60	730	23.6	0
+60	730	23.7	0
+60	730	23.8	0
+60	730	23.9	0
+60	730	24	0
+60	730	24.1	0
+60	730	24.2	0
+60	730	24.3	0
+60	730	24.4	0
+60	730	24.5	0
+60	730	24.6	0
+60	730	24.7	0
+60	730	24.8	0
+60	730	24.9	0
+60	730	25	0
+60	730	25.1	0
+60	730	25.2	0
+60	730	25.3	0
+60	730	25.4	0
+60	730	25.5	0
+60	730	25.6	0
+60	730	25.7	0
+60	730	25.8	0
+60	730	25.9	0
+60	730	26	0
+60	730	26.1	0
+60	730	26.2	0
+60	730	26.3	0
+60	730	26.4	0
+60	730	26.5	0
+60	730	26.6	0
+60	730	26.7	0
+60	730	26.8	0
+60	730	26.9	0
+60	730	27	0
+60	730	27.1	0
+60	730	27.2	0
+60	730	27.3	0
+60	730	27.4	0
+60	730	27.5	0
+60	730	27.6	0
+60	730	27.7	0
+60	730	27.8	0
+60	730	27.9	0
+60	730	28	0
+60	730	28.1	0
+60	730	28.2	0
+60	730	28.3	0
+60	730	28.4	0
+60	730	28.5	0
+60	730	28.6	0
+60	730	28.7	0
+60	730	28.8	0
+60	730	28.9	0
+60	730	29	0
+60	730	29.1	0
+60	730	29.2	0
+60	730	29.3	0
+60	730	29.4	0
+60	730	29.5	0
+60	730	29.6	0
+60	730	29.7	0
+60	730	29.8	0
+60	730	29.9	0
+60	730	30	0
+60	730	30.1	0
+60	730	30.2	0
+60	730	30.3	0
+60	730	30.4	0
+60	730	30.5	0
+60	730	30.6	0
+60	730	30.7	0
+60	730	30.8	0
+60	730	30.9	0
+60	730	31	0
+60	730	31.1	0
+60	730	31.2	0
+60	730	31.3	0
+60	730	31.4	0
+60	730	31.5	0
+60	730	31.6	0
+60	730	31.7	0
+60	730	31.8	0
+60	730	31.9	0
+60	730	32	0
+60	730	32.1	0
+60	730	32.2	0
+60	730	32.3	0
+60	730	32.4	0
+60	730	32.5	0
+60	730	32.6	0
+60	730	32.7	0
+60	730	32.8	0
+60	730	32.9	0
+60	730	33	0
+60	730	33.1	0
+60	730	33.2	0
+60	730	33.3	0
+60	730	33.4	0
+60	730	33.5	0
+60	730	33.6	0
+60	730	33.7	0
+60	730	33.8	0
+60	730	33.9	0
+60	730	34	0
+60	730	34.1	0
+60	730	34.2	0
+60	730	34.3	0
+60	730	34.4	0
+60	730	34.5	0
+60	730	34.6	0
+60	730	34.7	0
+60	730	34.8	0
+60	730	34.9	0
+60	730	35	0
+60	730	35.1	0
+60	730	35.2	0
+60	730	35.3	0
+60	730	35.4	0
+60	730	35.5	0
+60	730	35.6	0
+60	730	35.7	0
+60	730	35.8	0
+60	730	35.9	0
+60	730	36	0
+60	730	36.1	0
+60	730	36.2	0
+60	730	36.3	0
+60	730	36.4	0
+60	730	36.5	0
+60	730	36.6	0
+60	730	36.7	0
+60	730	36.8	0
+60	730	36.9	0
+60	730	37	0
+60	730	37.1	0
+60	730	37.2	0
+60	730	37.3	0
+60	730	37.4	0
+60	730	37.5	0
+60	730	37.6	0
+60	730	37.7	0
+60	730	37.8	0
+60	730	37.9	0
+60	730	38	0
+60	730	38.1	0
+60	730	38.2	0
+60	730	38.3	0
+60	730	38.4	0
+60	730	38.5	0
+60	730	38.6	0
+60	730	38.7	0
+60	730	38.8	0
+60	730	38.9	0
+60	730	39	0
+60	730	39.1	0
+60	730	39.2	0
+60	730	39.3	0
+60	730	39.4	0
+60	730	39.5	0
+60	730	39.6	0
+60	730	39.7	0
+60	730	39.8	0
+60	730	39.9	0
+60	730	40	0
+60	730	40.1	0
+60	730	40.2	0
+60	730	40.3	0
+60	730	40.4	0
+60	730	40.5	0
+60	730	40.6	0
+60	730	40.7	0
+60	730	40.8	0
+60	730	40.9	0
+60	730	41	0
+60	730	41.1	0
+60	730	41.2	0
+60	730	41.3	0
+60	730	41.4	0
+60	730	41.5	0
+60	730	41.6	0
+60	730	41.7	0
+60	730	41.8	0
+60	730	41.9	0
+60	730	42	0
+60	730	42.1	0
+60	730	42.2	0
+60	730	42.3	0
+60	730	42.4	0
+60	730	42.5	0
+60	730	42.6	0
+60	730	42.7	0
+60	730	42.8	0
+60	730	42.9	0
+60	730	43	0
+60	730	43.1	0
+60	730	43.2	0
+60	730	43.3	0
+60	730	43.4	0
+60	730	43.5	0
+60	730	43.6	0
+60	730	43.7	0
+60	730	43.8	0
+60	730	43.9	0
+60	730	44	0
+60	730	44.1	0
+60	730	44.2	0
+60	730	44.3	0
+60	730	44.4	0
+60	730	44.5	0
+60	730	44.6	0
+60	730	44.7	0
+60	730	44.8	0
+60	730	44.9	0
+60	730	45	0
+60	730	45.1	0
+60	730	45.2	0
+60	730	45.3	0
+60	730	45.4	0
+60	730	45.5	0
+60	730	45.6	0
+60	730	45.7	0
+60	730	45.8	0
+60	730	45.9	0
+60	730	46	0
+60	730	46.1	0
+60	730	46.2	0
+60	730	46.3	0
+60	730	46.4	0
+60	730	46.5	0
+60	730	46.6	0
+60	730	46.7	0
+60	730	46.8	0
+60	730	46.9	0
+60	730	47	0
+60	730	47.1	0
+60	730	47.2	0
+60	730	47.3	0
+60	730	47.4	0
+60	730	47.5	0
+60	730	47.6	0
+60	730	47.7	0
+60	730	47.8	0
+60	730	47.9	0
+60	730	48	0
+60	730	48.1	0
+60	730	48.2	0
+60	730	48.3	0
+60	730	48.4	0
+60	730	48.5	0
+60	730	48.6	0
+60	730	48.7	0
+60	730	48.8	0
+60	730	48.9	0
+60	730	49	0
+60	730	49.1	0
+60	730	49.2	0
+60	730	49.3	0
+60	730	49.4	0
+60	730	49.5	0
+60	730	49.6	0
+60	730	49.7	0
+60	730	49.8	0
+60	730	49.9	0
+60	730	50	0
+60	730	50.1	0
+60	730	50.2	0
+60	730	50.3	0
+60	730	50.4	0
+60	730	50.5	0
+60	730	50.6	0
+60	730	50.7	0
+60	730	50.8	0
+60	730	50.9	0
+60	730	51	0
+60	730	51.1	0
+60	730	51.2	0
+60	730	51.3	0
+60	730	51.4	0
+60	730	51.5	0
+60	730	51.6	0
+60	730	51.7	0
+60	730	51.8	0
+60	730	51.9	0
+60	730	52	0
+60	730	52.1	0
+60	730	52.2	0
+60	730	52.3	0
+60	730	52.4	0
+60	730	52.5	0
+60	730	52.6	0
+60	730	52.7	0
+60	730	52.8	0
+60	730	52.9	0
+60	730	53	0
+60	730	53.1	0
+60	730	53.2	0
+60	730	53.3	0
+60	730	53.4	0
+60	730	53.5	0
+60	730	53.6	0
+60	730	53.7	0
+60	730	53.8	0
+60	730	53.9	0
+60	730	54	0
+60	730	54.1	0
+60	730	54.2	0
+60	730	54.3	0
+60	730	54.4	0
+60	730	54.5	0
+60	730	54.6	0
+60	730	54.7	0
+60	730	54.8	0
+60	730	54.9	0
+60	730	55	0
+60	730	55.1	0
+60	730	55.2	0
+60	730	55.3	0
+60	730	55.4	0
+60	730	55.5	0
+60	730	55.6	0
+60	730	55.7	0
+60	730	55.8	0
+60	730	55.9	0
+60	730	56	0
+60	730	56.1	0
+60	730	56.2	0
+60	730	56.3	0
+60	730	56.4	0
+60	730	56.5	0
+60	730	56.6	0
+60	730	56.7	0
+60	730	56.8	0
+60	730	56.9	0
+60	730	57	0
+60	730	57.1	0
+60	730	57.2	0
+59	235	20	1264
+59	235	20	1264
+58	235	20	0
+58	235	20	0
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 50	223	0.2	0
 50	223	0.3	0
 50	223	0.4	0
@@ -1438,6 +5752,7 @@ attr title "queueing times"
 50	223	19.8	0
 50	223	19.9	0
 50	223	20	0
+<<<<<<< HEAD
 50	304	20.1	12640
 50	304	20.2	0
 50	304	20.3	0
@@ -1583,6 +5898,480 @@ attr title "queueing times"
 55	556	30.002897131614	1200
 55	589	30.003856271828	1200
 55	637	30.005813403442	1200
+=======
+50	730	20.1	25280
+50	730	20.2	0
+50	730	20.3	0
+50	730	20.4	0
+50	730	20.5	0
+50	730	20.6	0
+50	730	20.7	0
+50	730	20.8	0
+50	730	20.9	0
+50	730	21	0
+50	730	21.1	0
+50	730	21.2	0
+50	730	21.3	0
+50	730	21.4	0
+50	730	21.5	0
+50	730	21.6	0
+50	730	21.7	0
+50	730	21.8	0
+50	730	21.9	0
+50	730	22	0
+50	730	22.1	0
+50	730	22.2	0
+50	730	22.3	0
+50	730	22.4	0
+50	730	22.5	0
+50	730	22.6	0
+50	730	22.7	0
+50	730	22.8	0
+50	730	22.9	0
+50	730	23	0
+50	730	23.1	0
+50	730	23.2	0
+50	730	23.3	0
+50	730	23.4	0
+50	730	23.5	0
+50	730	23.6	0
+50	730	23.7	0
+50	730	23.8	0
+50	730	23.9	0
+50	730	24	0
+50	730	24.1	0
+50	730	24.2	0
+50	730	24.3	0
+50	730	24.4	0
+50	730	24.5	0
+50	730	24.6	0
+50	730	24.7	0
+50	730	24.8	0
+50	730	24.9	0
+50	730	25	0
+50	730	25.1	0
+50	730	25.2	0
+50	730	25.3	0
+50	730	25.4	0
+50	730	25.5	0
+50	730	25.6	0
+50	730	25.7	0
+50	730	25.8	0
+50	730	25.9	0
+50	730	26	0
+50	730	26.1	0
+50	730	26.2	0
+50	730	26.3	0
+50	730	26.4	0
+50	730	26.5	0
+50	730	26.6	0
+50	730	26.7	0
+50	730	26.8	0
+50	730	26.9	0
+50	730	27	0
+50	730	27.1	0
+50	730	27.2	0
+50	730	27.3	0
+50	730	27.4	0
+50	730	27.5	0
+50	730	27.6	0
+50	730	27.7	0
+50	730	27.8	0
+50	730	27.9	0
+50	730	28	0
+50	730	28.1	0
+50	730	28.2	0
+50	730	28.3	0
+50	730	28.4	0
+50	730	28.5	0
+50	730	28.6	0
+50	730	28.7	0
+50	730	28.8	0
+50	730	28.9	0
+50	730	29	0
+50	730	29.1	0
+50	730	29.2	0
+50	730	29.3	0
+50	730	29.4	0
+50	730	29.5	0
+50	730	29.6	0
+50	730	29.7	0
+50	730	29.8	0
+50	730	29.9	0
+50	730	30	0
+50	730	30.1	0
+50	730	30.2	0
+50	730	30.3	0
+50	730	30.4	0
+50	730	30.5	0
+50	730	30.6	0
+50	730	30.7	0
+50	730	30.8	0
+50	730	30.9	0
+50	730	31	0
+50	730	31.1	0
+50	730	31.2	0
+50	730	31.3	0
+50	730	31.4	0
+50	730	31.5	0
+50	730	31.6	0
+50	730	31.7	0
+50	730	31.8	0
+50	730	31.9	0
+50	730	32	0
+50	730	32.1	0
+50	730	32.2	0
+50	730	32.3	0
+50	730	32.4	0
+50	730	32.5	0
+50	730	32.6	0
+50	730	32.7	0
+50	730	32.8	0
+50	730	32.9	0
+50	730	33	0
+50	730	33.1	0
+50	730	33.2	0
+50	730	33.3	0
+50	730	33.4	0
+50	730	33.5	0
+50	730	33.6	0
+50	730	33.7	0
+50	730	33.8	0
+50	730	33.9	0
+50	730	34	0
+50	730	34.1	0
+50	730	34.2	0
+50	730	34.3	0
+50	730	34.4	0
+50	730	34.5	0
+50	730	34.6	0
+50	730	34.7	0
+50	730	34.8	0
+50	730	34.9	0
+50	730	35	0
+50	730	35.1	0
+50	730	35.2	0
+50	730	35.3	0
+50	730	35.4	0
+50	730	35.5	0
+50	730	35.6	0
+50	730	35.7	0
+50	730	35.8	0
+50	730	35.9	0
+50	730	36	0
+50	730	36.1	0
+50	730	36.2	0
+50	730	36.3	0
+50	730	36.4	0
+50	730	36.5	0
+50	730	36.6	0
+50	730	36.7	0
+50	730	36.8	0
+50	730	36.9	0
+50	730	37	0
+50	730	37.1	0
+50	730	37.2	0
+50	730	37.3	0
+50	730	37.4	0
+50	730	37.5	0
+50	730	37.6	0
+50	730	37.7	0
+50	730	37.8	0
+50	730	37.9	0
+50	730	38	0
+50	730	38.1	0
+50	730	38.2	0
+50	730	38.3	0
+50	730	38.4	0
+50	730	38.5	0
+50	730	38.6	0
+50	730	38.7	0
+50	730	38.8	0
+50	730	38.9	0
+50	730	39	0
+50	730	39.1	0
+50	730	39.2	0
+50	730	39.3	0
+50	730	39.4	0
+50	730	39.5	0
+50	730	39.6	0
+50	730	39.7	0
+50	730	39.8	0
+50	730	39.9	0
+50	730	40	0
+50	730	40.1	0
+50	730	40.2	0
+50	730	40.3	0
+50	730	40.4	0
+50	730	40.5	0
+50	730	40.6	0
+50	730	40.7	0
+50	730	40.8	0
+50	730	40.9	0
+50	730	41	0
+50	730	41.1	0
+50	730	41.2	0
+50	730	41.3	0
+50	730	41.4	0
+50	730	41.5	0
+50	730	41.6	0
+50	730	41.7	0
+50	730	41.8	0
+50	730	41.9	0
+50	730	42	0
+50	730	42.1	0
+50	730	42.2	0
+50	730	42.3	0
+50	730	42.4	0
+50	730	42.5	0
+50	730	42.6	0
+50	730	42.7	0
+50	730	42.8	0
+50	730	42.9	0
+50	730	43	0
+50	730	43.1	0
+50	730	43.2	0
+50	730	43.3	0
+50	730	43.4	0
+50	730	43.5	0
+50	730	43.6	0
+50	730	43.7	0
+50	730	43.8	0
+50	730	43.9	0
+50	730	44	0
+50	730	44.1	0
+50	730	44.2	0
+50	730	44.3	0
+50	730	44.4	0
+50	730	44.5	0
+50	730	44.6	0
+50	730	44.7	0
+50	730	44.8	0
+50	730	44.9	0
+50	730	45	0
+50	730	45.1	0
+50	730	45.2	0
+50	730	45.3	0
+50	730	45.4	0
+50	730	45.5	0
+50	730	45.6	0
+50	730	45.7	0
+50	730	45.8	0
+50	730	45.9	0
+50	730	46	0
+50	730	46.1	0
+50	730	46.2	0
+50	730	46.3	0
+50	730	46.4	0
+50	730	46.5	0
+50	730	46.6	0
+50	730	46.7	0
+50	730	46.8	0
+50	730	46.9	0
+50	730	47	0
+50	730	47.1	0
+50	730	47.2	0
+50	730	47.3	0
+50	730	47.4	0
+50	730	47.5	0
+50	730	47.6	0
+50	730	47.7	0
+50	730	47.8	0
+50	730	47.9	0
+50	730	48	0
+50	730	48.1	0
+50	730	48.2	0
+50	730	48.3	0
+50	730	48.4	0
+50	730	48.5	0
+50	730	48.6	0
+50	730	48.7	0
+50	730	48.8	0
+50	730	48.9	0
+50	730	49	0
+50	730	49.1	0
+50	730	49.2	0
+50	730	49.3	0
+50	730	49.4	0
+50	730	49.5	0
+50	730	49.6	0
+50	730	49.7	0
+50	730	49.8	0
+50	730	49.9	0
+50	730	50	0
+50	730	50.1	0
+50	730	50.2	0
+50	730	50.3	0
+50	730	50.4	0
+50	730	50.5	0
+50	730	50.6	0
+50	730	50.7	0
+50	730	50.8	0
+50	730	50.9	0
+50	730	51	0
+50	730	51.1	0
+50	730	51.2	0
+50	730	51.3	0
+50	730	51.4	0
+50	730	51.5	0
+50	730	51.6	0
+50	730	51.7	0
+50	730	51.8	0
+50	730	51.9	0
+50	730	52	0
+50	730	52.1	0
+50	730	52.2	0
+50	730	52.3	0
+50	730	52.4	0
+50	730	52.5	0
+50	730	52.6	0
+50	730	52.7	0
+50	730	52.8	0
+50	730	52.9	0
+50	730	53	0
+50	730	53.1	0
+50	730	53.2	0
+50	730	53.3	0
+50	730	53.4	0
+50	730	53.5	0
+50	730	53.6	0
+50	730	53.7	0
+50	730	53.8	0
+50	730	53.9	0
+50	730	54	0
+50	730	54.1	0
+50	730	54.2	0
+50	730	54.3	0
+50	730	54.4	0
+50	730	54.5	0
+50	730	54.6	0
+50	730	54.7	0
+50	730	54.8	0
+50	730	54.9	0
+50	730	55	0
+50	730	55.1	0
+50	730	55.2	0
+50	730	55.3	0
+50	730	55.4	0
+50	730	55.5	0
+50	730	55.6	0
+50	730	55.7	0
+50	730	55.8	0
+50	730	55.9	0
+50	730	56	0
+50	730	56.1	0
+50	730	56.2	0
+50	730	56.3	0
+50	730	56.4	0
+50	730	56.5	0
+50	730	56.6	0
+50	730	56.7	0
+50	730	56.8	0
+50	730	56.9	0
+50	730	57	0
+50	730	57.1	0
+50	730	57.2	0
+49	223	20	1264
+49	231	20	1264
+51	223	20	1
+51	231	20	2
+51	235	20	1
+51	235	20	0
+52	223	20	1264
+52	231	20	2528
+52	235	20	1264
+52	235	20	0
+67	241	20.000152	0.000152
+67	303	20.000663365896	0.000663365896
+1	2	0.1	0
+1	2	0.1	0
+1	235	20	1
+1	235	20	2
+1	241	20.000152	1
+1	303	20.000663365896	0
+2	2	0.1	0
+2	2	0.1	0
+2	223	20	1
+2	234	20	0
+2	242	20.000152	1
+2	263	20.000288365896	0
+2	268	20.000440365896	1
+2	289	20.000511365896	0
+53	223	20	4
+53	241	20.000152	7
+9	2	0.1	0
+9	2	0.1	0
+9	223	20	0
+9	223	20	2
+9	234	20	2
+9	234	20	0
+9	236	20	0
+9	236	20	0
+9	241	20.000152	0
+9	241	20.000152	1
+9	242	20.000152	1
+9	242	20.000152	2
+9	263	20.000288365896	2
+9	263	20.000288365896	1
+9	268	20.000440365896	1
+9	268	20.000440365896	2
+9	289	20.000511365896	2
+9	289	20.000511365896	0
+9	291	20.000511365896	0
+9	291	20.000511365896	0
+9	304	20.000663365896	0
+9	304	20.000663365896	0
+10	2	0.1	15
+61	235	20	12000000
+61	290	20.000511365896	12000000
+0	2	0.1	0
+0	2	0.1	0
+0	235	20	1
+0	241	20.000152	0
+0	290	20.000511365896	1
+0	303	20.000663365896	0
+100	269	20.000440365896	158
+99	269	20.000440365896	158
+98	269	20.000440365896	158
+66	241	20.000152	158
+66	303	20.000663365896	158
+65	241	20.000152	158
+65	303	20.000663365896	158
+64	241	20.000152	158
+64	303	20.000663365896	158
+97	269	20.000440365896	158
+62	235	20	158
+62	290	20.000511365896	158
+48	223	20	130
+48	231	20	130
+101	269	20.000440365896	130
+7	2	0.1	3
+6	2	0.1	0
+6	2	0.1	0
+6	2	0.1	2
+6	236	20	3
+6	242	20.000152	2
+6	291	20.000511365896	3
+6	304	20.000663365896	2
+8	2	0.1	1
+8	236	20	0
+8	242	20.000152	1
+8	263	20.000288365896	3
+8	268	20.000440365896	1
+8	291	20.000511365896	0
+8	304	20.000663365896	1
+63	236	20	1
+63	237	20	2
+63	241	20.000152	1
+63	242	20.000152	0
+63	291	20.000511365896	1
+63	292	20.000511365896	2
+63	303	20.000663365896	1
+63	304	20.000663365896	0
+57	225	20	0
+57	233	20	0
+57	273	20.000440365896	0.000440365896
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 56	225	0.2	0
 56	225	0.3	0
 56	225	0.4	0
@@ -1782,6 +6571,7 @@ attr title "queueing times"
 56	225	19.8	0
 56	225	19.9	0
 56	225	20	0
+<<<<<<< HEAD
 56	306	20.1	8000
 56	306	20.2	0
 56	306	20.3	0
@@ -5451,4 +10241,383 @@ attr unit bps
 150	928	34.9	0
 150	928	35	0
 150	928	35.000959063831	0
+=======
+56	730	20.1	24000
+56	730	20.2	0
+56	730	20.3	0
+56	730	20.4	0
+56	730	20.5	0
+56	730	20.6	0
+56	730	20.7	0
+56	730	20.8	0
+56	730	20.9	0
+56	730	21	0
+56	730	21.1	0
+56	730	21.2	0
+56	730	21.3	0
+56	730	21.4	0
+56	730	21.5	0
+56	730	21.6	0
+56	730	21.7	0
+56	730	21.8	0
+56	730	21.9	0
+56	730	22	0
+56	730	22.1	0
+56	730	22.2	0
+56	730	22.3	0
+56	730	22.4	0
+56	730	22.5	0
+56	730	22.6	0
+56	730	22.7	0
+56	730	22.8	0
+56	730	22.9	0
+56	730	23	0
+56	730	23.1	0
+56	730	23.2	0
+56	730	23.3	0
+56	730	23.4	0
+56	730	23.5	0
+56	730	23.6	0
+56	730	23.7	0
+56	730	23.8	0
+56	730	23.9	0
+56	730	24	0
+56	730	24.1	0
+56	730	24.2	0
+56	730	24.3	0
+56	730	24.4	0
+56	730	24.5	0
+56	730	24.6	0
+56	730	24.7	0
+56	730	24.8	0
+56	730	24.9	0
+56	730	25	0
+56	730	25.1	0
+56	730	25.2	0
+56	730	25.3	0
+56	730	25.4	0
+56	730	25.5	0
+56	730	25.6	0
+56	730	25.7	0
+56	730	25.8	0
+56	730	25.9	0
+56	730	26	0
+56	730	26.1	0
+56	730	26.2	0
+56	730	26.3	0
+56	730	26.4	0
+56	730	26.5	0
+56	730	26.6	0
+56	730	26.7	0
+56	730	26.8	0
+56	730	26.9	0
+56	730	27	0
+56	730	27.1	0
+56	730	27.2	0
+56	730	27.3	0
+56	730	27.4	0
+56	730	27.5	0
+56	730	27.6	0
+56	730	27.7	0
+56	730	27.8	0
+56	730	27.9	0
+56	730	28	0
+56	730	28.1	0
+56	730	28.2	0
+56	730	28.3	0
+56	730	28.4	0
+56	730	28.5	0
+56	730	28.6	0
+56	730	28.7	0
+56	730	28.8	0
+56	730	28.9	0
+56	730	29	0
+56	730	29.1	0
+56	730	29.2	0
+56	730	29.3	0
+56	730	29.4	0
+56	730	29.5	0
+56	730	29.6	0
+56	730	29.7	0
+56	730	29.8	0
+56	730	29.9	0
+56	730	30	0
+56	730	30.1	0
+56	730	30.2	0
+56	730	30.3	0
+56	730	30.4	0
+56	730	30.5	0
+56	730	30.6	0
+56	730	30.7	0
+56	730	30.8	0
+56	730	30.9	0
+56	730	31	0
+56	730	31.1	0
+56	730	31.2	0
+56	730	31.3	0
+56	730	31.4	0
+56	730	31.5	0
+56	730	31.6	0
+56	730	31.7	0
+56	730	31.8	0
+56	730	31.9	0
+56	730	32	0
+56	730	32.1	0
+56	730	32.2	0
+56	730	32.3	0
+56	730	32.4	0
+56	730	32.5	0
+56	730	32.6	0
+56	730	32.7	0
+56	730	32.8	0
+56	730	32.9	0
+56	730	33	0
+56	730	33.1	0
+56	730	33.2	0
+56	730	33.3	0
+56	730	33.4	0
+56	730	33.5	0
+56	730	33.6	0
+56	730	33.7	0
+56	730	33.8	0
+56	730	33.9	0
+56	730	34	0
+56	730	34.1	0
+56	730	34.2	0
+56	730	34.3	0
+56	730	34.4	0
+56	730	34.5	0
+56	730	34.6	0
+56	730	34.7	0
+56	730	34.8	0
+56	730	34.9	0
+56	730	35	0
+56	730	35.1	0
+56	730	35.2	0
+56	730	35.3	0
+56	730	35.4	0
+56	730	35.5	0
+56	730	35.6	0
+56	730	35.7	0
+56	730	35.8	0
+56	730	35.9	0
+56	730	36	0
+56	730	36.1	0
+56	730	36.2	0
+56	730	36.3	0
+56	730	36.4	0
+56	730	36.5	0
+56	730	36.6	0
+56	730	36.7	0
+56	730	36.8	0
+56	730	36.9	0
+56	730	37	0
+56	730	37.1	0
+56	730	37.2	0
+56	730	37.3	0
+56	730	37.4	0
+56	730	37.5	0
+56	730	37.6	0
+56	730	37.7	0
+56	730	37.8	0
+56	730	37.9	0
+56	730	38	0
+56	730	38.1	0
+56	730	38.2	0
+56	730	38.3	0
+56	730	38.4	0
+56	730	38.5	0
+56	730	38.6	0
+56	730	38.7	0
+56	730	38.8	0
+56	730	38.9	0
+56	730	39	0
+56	730	39.1	0
+56	730	39.2	0
+56	730	39.3	0
+56	730	39.4	0
+56	730	39.5	0
+56	730	39.6	0
+56	730	39.7	0
+56	730	39.8	0
+56	730	39.9	0
+56	730	40	0
+56	730	40.1	0
+56	730	40.2	0
+56	730	40.3	0
+56	730	40.4	0
+56	730	40.5	0
+56	730	40.6	0
+56	730	40.7	0
+56	730	40.8	0
+56	730	40.9	0
+56	730	41	0
+56	730	41.1	0
+56	730	41.2	0
+56	730	41.3	0
+56	730	41.4	0
+56	730	41.5	0
+56	730	41.6	0
+56	730	41.7	0
+56	730	41.8	0
+56	730	41.9	0
+56	730	42	0
+56	730	42.1	0
+56	730	42.2	0
+56	730	42.3	0
+56	730	42.4	0
+56	730	42.5	0
+56	730	42.6	0
+56	730	42.7	0
+56	730	42.8	0
+56	730	42.9	0
+56	730	43	0
+56	730	43.1	0
+56	730	43.2	0
+56	730	43.3	0
+56	730	43.4	0
+56	730	43.5	0
+56	730	43.6	0
+56	730	43.7	0
+56	730	43.8	0
+56	730	43.9	0
+56	730	44	0
+56	730	44.1	0
+56	730	44.2	0
+56	730	44.3	0
+56	730	44.4	0
+56	730	44.5	0
+56	730	44.6	0
+56	730	44.7	0
+56	730	44.8	0
+56	730	44.9	0
+56	730	45	0
+56	730	45.1	0
+56	730	45.2	0
+56	730	45.3	0
+56	730	45.4	0
+56	730	45.5	0
+56	730	45.6	0
+56	730	45.7	0
+56	730	45.8	0
+56	730	45.9	0
+56	730	46	0
+56	730	46.1	0
+56	730	46.2	0
+56	730	46.3	0
+56	730	46.4	0
+56	730	46.5	0
+56	730	46.6	0
+56	730	46.7	0
+56	730	46.8	0
+56	730	46.9	0
+56	730	47	0
+56	730	47.1	0
+56	730	47.2	0
+56	730	47.3	0
+56	730	47.4	0
+56	730	47.5	0
+56	730	47.6	0
+56	730	47.7	0
+56	730	47.8	0
+56	730	47.9	0
+56	730	48	0
+56	730	48.1	0
+56	730	48.2	0
+56	730	48.3	0
+56	730	48.4	0
+56	730	48.5	0
+56	730	48.6	0
+56	730	48.7	0
+56	730	48.8	0
+56	730	48.9	0
+56	730	49	0
+56	730	49.1	0
+56	730	49.2	0
+56	730	49.3	0
+56	730	49.4	0
+56	730	49.5	0
+56	730	49.6	0
+56	730	49.7	0
+56	730	49.8	0
+56	730	49.9	0
+56	730	50	0
+56	730	50.1	0
+56	730	50.2	0
+56	730	50.3	0
+56	730	50.4	0
+56	730	50.5	0
+56	730	50.6	0
+56	730	50.7	0
+56	730	50.8	0
+56	730	50.9	0
+56	730	51	0
+56	730	51.1	0
+56	730	51.2	0
+56	730	51.3	0
+56	730	51.4	0
+56	730	51.5	0
+56	730	51.6	0
+56	730	51.7	0
+56	730	51.8	0
+56	730	51.9	0
+56	730	52	0
+56	730	52.1	0
+56	730	52.2	0
+56	730	52.3	0
+56	730	52.4	0
+56	730	52.5	0
+56	730	52.6	0
+56	730	52.7	0
+56	730	52.8	0
+56	730	52.9	0
+56	730	53	0
+56	730	53.1	0
+56	730	53.2	0
+56	730	53.3	0
+56	730	53.4	0
+56	730	53.5	0
+56	730	53.6	0
+56	730	53.7	0
+56	730	53.8	0
+56	730	53.9	0
+56	730	54	0
+56	730	54.1	0
+56	730	54.2	0
+56	730	54.3	0
+56	730	54.4	0
+56	730	54.5	0
+56	730	54.6	0
+56	730	54.7	0
+56	730	54.8	0
+56	730	54.9	0
+56	730	55	0
+56	730	55.1	0
+56	730	55.2	0
+56	730	55.3	0
+56	730	55.4	0
+56	730	55.5	0
+56	730	55.6	0
+56	730	55.7	0
+56	730	55.8	0
+56	730	55.9	0
+56	730	56	0
+56	730	56.1	0
+56	730	56.2	0
+56	730	56.3	0
+56	730	56.4	0
+56	730	56.5	0
+56	730	56.6	0
+56	730	56.7	0
+56	730	56.8	0
+56	730	56.9	0
+56	730	57	0
+56	730	57.1	0
+56	730	57.2	0
+55	225	20	100
+55	233	20	100
+55	273	20.000440365896	100
+44	213	20	100
+44	225	20	100
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 

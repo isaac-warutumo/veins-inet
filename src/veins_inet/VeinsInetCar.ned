@@ -41,7 +41,7 @@ module isAttackCar extends VeinsInetCar
 {
     parameters:
         bool isBlackholeAttack = default(false);
-        
+
         @display("i=device/cellphone");
 
     submodules:
@@ -52,7 +52,8 @@ module isDosCar extends VeinsInetCar
 {
     parameters:
         bool isDosAttack = default(false);
-        
+
+
         @display("i=device/cellphone");
 
     submodules:

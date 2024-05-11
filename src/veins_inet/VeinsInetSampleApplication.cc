@@ -73,8 +73,10 @@ bool VeinsInetSampleApplication::startApplication() {
     auto callback10 = [this]() {
 
         if (getParentModule()->getIndex() == 1
+
                 && ((par("isBlackholeAttack").boolValue())
                         || (par("isDosAttack").boolValue()))) {
+
             getParentModule()->getDisplayString().setTagArg("i", 1, "yellow");
             traciVehicle->setSpeed(0);
         }
@@ -95,7 +97,9 @@ bool VeinsInetSampleApplication::startApplication() {
     auto callback20 = [this]() {
 
         if (getParentModule()->getIndex() == 2
-                && (par("isBlackholeAttack").boolValue())) {
+
+        && (par("isBlackholeAttack").boolValue())) {
+
             traciVehicle->setSpeed(0);
         }
 
@@ -117,6 +121,7 @@ bool VeinsInetSampleApplication::startApplication() {
 bool VeinsInetSampleApplication::stopApplication() {
     return true;
 }
+
 void VeinsInetSampleApplication::dosAttackNode0() {
     auto payload = makeShared<VeinsInetSampleMessage>();
     payload->setChunkLength(B(1200)); // Adjust size as needed
@@ -141,18 +146,19 @@ void VeinsInetSampleApplication::processPacket(
         std::shared_ptr<inet::Packet> pk) {
     auto payload = pk->peekAtFront<VeinsInetSampleMessage>();
 
-    //Implementing black hole attack
-    if (par("isBlackholeAttack").boolValue()) {
-        EV << " Attacker Mode set to: BlackholeAttack" << endl;
-        EV << "Malicious car found - intercepting messages and dropping them"
-                  << endl;
-        return; // Discard all intercepted packets, do not forward or process
-    } else if (par("isDosAttack").boolValue()) {
-        EV << " Attacker Mode set to: DosAttack" << endl;
-        EV << "Malicious car found - flooding messages" << endl;
 
-        auto dosAttackCallback = [this]() {
-            dosAttackNode0();
+//Implementing black hole attack
+if (par("isBlackholeAttack").boolValue()) {
+    EV << " Attacker Mode set to: BlackholeAttack" << endl;
+    EV << "Malicious car found - intercepting messages and dropping them"
+    << endl;
+    return; // Discard all intercepted packets, do not forward or process
+} else if (par("isDosAttack").boolValue()) {
+    EV << " Attacker Mode set to: DosAttack" << endl;
+    EV << "Malicious car found - flooding messages" << endl;
+
+    auto dosAttackCallback = [this]() {
+        dosAttackNode0();
 //            auto payload = makeShared<VeinsInetSampleMessage>();
 //
 //            // Send  very large packet at once to simulate flooding
@@ -164,12 +170,13 @@ void VeinsInetSampleApplication::processPacket(
 //            packet->insertAtBack(payload);
 //            sendPacket(std::move(packet));
 
-        };
-        // Schedule the DOS attack to start immediately and repeat every second
-        timerManager.create(
-                veins::TimerSpecification(dosAttackCallback).interval(
-                        SimTime(5, SIMTIME_S)));
-        return;
+    };
+    // Schedule the DOS attack to start immediately and repeat every second
+    timerManager.create(
+            veins::TimerSpecification(dosAttackCallback).interval(
+                    SimTime(5, SIMTIME_S)));
+    return;
+
     }
 
     EV_INFO << "Received packet: " << payload << endl;
@@ -179,9 +186,10 @@ void VeinsInetSampleApplication::processPacket(
     traciVehicle->changeRoute(payload->getRoadId(), 999.9);
 
     if (haveForwarded)
-        return;
+    return;
 
     auto packet = createPacket("ACK");
+
     packet->insertAtBack(payload);
     sendPacket(std::move(packet));
 

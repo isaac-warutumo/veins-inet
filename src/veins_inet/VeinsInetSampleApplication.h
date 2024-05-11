@@ -36,6 +36,7 @@ protected:
     virtual void processPacket(std::shared_ptr<inet::Packet> pk) override;
     virtual void dosAttackNode0();
 
+
 public:
     VeinsInetSampleApplication();
     ~VeinsInetSampleApplication();

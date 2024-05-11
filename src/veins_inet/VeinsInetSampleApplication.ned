@@ -27,9 +27,11 @@ import org.car2x.veins.subprojects.veins_inet.VeinsInetApplicationBase;
 simple VeinsInetSampleApplication extends VeinsInetApplicationBase
 {
     parameters:
+
          //implement either DOS or Blackhole attack - not both at the same time
          bool isBlackholeAttack = false;
          bool isDosAttack = true;
+
          
         @class(VeinsInetSampleApplication);
     gates:

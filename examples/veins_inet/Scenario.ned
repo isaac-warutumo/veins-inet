@@ -39,7 +39,9 @@ import org.car2x.veins.visualizer.roads.RoadsCanvasVisualizer;
 import org.car2x.veins.visualizer.roads.RoadsOsgVisualizer;
 
 //isaac
+
 import org.car2x.veins.subprojects.veins_inet.isAttackCar;
+
 
 network Scenario
 {
@@ -65,7 +67,7 @@ network Scenario
         roadsOsgVisualizer: RoadsOsgVisualizer if useOsg {
             @display("p=192,416");
         }
-        
+
         //create cars (nodes) that are capable of being attackers
         node[0]: isAttackCar;
 }

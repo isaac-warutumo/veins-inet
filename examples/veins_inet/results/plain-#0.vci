@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 file 2981047 1715297856                                         
 version 3
 run plain-0-20240509-19:34:00-6992
 attr configname plain
 attr datetime 20240509-19:34:00
 attr datetimef 20240509-193400
+=======
+file 44369 1713809516                                           
+version 3
+run plain-0-20240422-20:10:25-9356
+attr configname plain
+attr datetime 20240422-20:10:25
+attr datetimef 20240422-201025
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr experiment plain
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -11,7 +20,11 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Scenario
+<<<<<<< HEAD
 attr processid 6992
+=======
+attr processid 9356
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -23,7 +36,11 @@ config sim-time-limit 60s
 config debug-on-errors true
 config cmdenv-express-mode true
 config image-path ../../../../images
+<<<<<<< HEAD
 config *.*.isBlackholeAttack true
+=======
+config *.node[1].isMalicious true
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 config *.node[*].numApps 1
 config *.node[*].app[0].typename org.car2x.veins.subprojects.veins_inet.VeinsInetSampleApplication
 config *.node[*].app[0].interface "\"wlan0\""
@@ -457,6 +474,7 @@ attr recordingmode vector
 attr source dataAge(packetReceived)
 attr title "received packet lifetime"
 attr unit s
+<<<<<<< HEAD
 vector 77 Scenario.node[1].app[0] packetSent:vector(packetBytes) ETV
 attr interpolationmode none
 attr recordingmode vector(packetBytes)
@@ -695,39 +713,152 @@ attr source throughput(packetPulled)
 attr title "outgoing datarate"
 attr unit bps
 vector 98 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+=======
+0	19936 49 2 233 0.1 20.000152 4 0 1 1 1
+1	19985 49 2 233 0.1 20.000152 4 0 1 1 1
+2	20034 42 2 226 0.1 20 4 0 1 1 1
+3	20076 21 2 224 0.1 20 2 0 1 1 1
+4	20097 10 2 2 0.1 0.1 1 0 0 0 0
+5	20107 10 2 2 0.1 0.1 1 0 0 0 0
+6	20117 59 2 234 0.1 20.000152 5 0 3 7 17
+7	20176 10 2 2 0.1 0.1 1 3 3 3 9
+8	20186 39 2 234 0.1 20.000152 3 0 1 2 2
+9	20225 122 2 234 0.1 20.000152 10 0 2 4 8
+10	20347 12 2 2 0.1 0.1 1 15 15 15 225
+11	20359 24 55 55 5.1 5.1 2 0 0 0 0
+12	20383 24 55 55 5.1 5.1 2 0 0 0 0
+13	20407 24 55 55 5.1 5.1 2 0 0 0 0
+14	20431 37 55 239 5.1 20.000152182948 2 0 1 1 1
+15	20468 12 55 55 5.1 5.1 1 0 0 0 0
+16	20480 12 55 55 5.1 5.1 1 0 0 0 0
+17	20492 36 55 55 5.1 5.1 3 0 2 2 4
+18	20528 12 55 55 5.1 5.1 1 3 3 3 9
+19	20540 62 55 235 5.1 20.000152182948 3 1 3 5 11
+20	20602 124 55 235 5.1 20.000152182948 6 0 0 0 0
+21	20726 13 55 55 5.1 5.1 1 15 15 15 225
+22	20739 28 108 108 10.1 10.1 2 0 0 0 0
+23	20767 28 108 108 10.1 10.1 2 0 0 0 0
+24	20795 28 108 108 10.1 10.1 2 0 0 0 0
+25	20823 14 108 108 10.1 10.1 1 0 0 0 0
+26	20837 14 108 108 10.1 10.1 1 0 0 0 0
+27	20851 14 108 108 10.1 10.1 1 0 0 0 0
+28	20865 42 108 108 10.1 10.1 3 0 2 2 4
+29	20907 14 108 108 10.1 10.1 1 3 3 3 9
+30	20921 14 108 108 10.1 10.1 1 1 1 1 1
+31	20935 28 108 108 10.1 10.1 2 0 0 0 0
+32	20963 15 108 108 10.1 10.1 1 15 15 15 225
+33	20978 28 161 161 15.1 15.1 2 0 0 0 0
+34	21006 28 161 161 15.1 15.1 2 0 0 0 0
+35	21034 28 161 161 15.1 15.1 2 0 0 0 0
+36	21062 14 161 161 15.1 15.1 1 0 0 0 0
+37	21076 14 161 161 15.1 15.1 1 0 0 0 0
+38	21090 14 161 161 15.1 15.1 1 0 0 0 0
+39	21104 42 161 161 15.1 15.1 3 0 2 2 4
+40	21146 14 161 161 15.1 15.1 1 3 3 3 9
+41	21160 14 161 161 15.1 15.1 1 1 1 1 1
+42	21174 28 161 161 15.1 15.1 2 0 0 0 0
+43	21202 15 161 161 15.1 15.1 1 15 15 15 225
+44	21217 14 213 213 20 20 1 100 100 100 10000
+45	21231 14 218 218 20 20 1 108 108 108 11664
+46	21245 14 220 220 20 20 1 128 128 128 16384
+47	21259 14 220 220 20 20 1 128 128 128 16384
+48	21273 14 223 223 20 20 1 130 130 130 16900
+49	21287 15 223 223 20 20 1 1264 1264 1264 1597696
+50	21302 2648 223 223 0.2 20 199 0 0 0 0
+51	23950 24 223 227 20 20 2 0 1 1 1
+52	23974 27 223 227 20 20 2 0 1264 1264 1597696
+53	24001 12 223 223 20 20 1 4 4 4 16
+54	24013 14 224 224 20 20 1 108 108 108 11664
+55	24027 14 225 225 20 20 1 100 100 100 10000
+56	24041 2648 225 225 0.2 20 199 0 0 0 0
+57	26689 12 225 225 20 20 1 0 0 0 0
+58	26701 12 227 227 20 20 1 0 0 0 0
+59	26713 15 227 227 20 20 1 1264 1264 1264 1597696
+60	26728 2648 227 227 0.2 20 199 0 0 0 0
+61	29376 19 227 227 20 20 1 12000000 12000000 12000000 1.44e+14
+62	29395 14 227 227 20 20 1 158 158 158 24964
+63	29409 62 228 234 20 20.000152 4 0 2 4 6
+64	29471 21 233 233 20.000152 20.000152 1 158 158 158 24964
+65	29492 21 233 233 20.000152 20.000152 1 158 158 158 24964
+66	29513 21 233 233 20.000152 20.000152 1 158 158 158 24964
+67	29534 26 233 233 20.000152 20.000152 1 0.000152 0.000152 0.000152 2.3104e-08
+68	29560 27 236 236 20.000152182948 20.000152182948 1 158 158 158 24964
+69	29587 27 236 236 20.000152182948 20.000152182948 1 158 158 158 24964
+70	29614 27 236 236 20.000152182948 20.000152182948 1 158 158 158 24964
+71	29641 27 236 236 20.000152182948 20.000152182948 1 158 158 158 24964
+72	29668 27 236 236 20.000152182948 20.000152182948 1 130 130 130 16900
+73	29695 27 239 239 20.000152182948 20.000152182948 1 108 108 108 11664
+74	29722 27 240 240 20.000152182948 20.000152182948 1 100 100 100 10000
+75	29749 2008 240 240 5.2 20 149 0 0 0 0
+76	31757 38 240 240 20.000152182948 20.000152182948 1 0.000152182948 0.000152182948 0.000152182948 2.3159649661971e-08
+vector 77 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
 attr interpolationmode linear
 attr recordingmode vector
 attr source throughput(packetPulled)
 attr title "outgoing datarate"
 attr unit bps
+vector 78 Scenario.node[1].wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 79 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+<<<<<<< HEAD
 vector 99 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+=======
+vector 80 Scenario.node[2].wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode linear
 attr recordingmode vector
 attr source throughput(packetPushStarted)
 attr title "incoming datarate"
 attr unit bps
+<<<<<<< HEAD
 vector 100 Scenario.node[2].app[0] throughput:vector ETV
+=======
+vector 81 Scenario.node[2].app[0] throughput:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr recordingmode vector
 attr source throughput(packetReceived)
 attr title throughput
 attr unit bps
+<<<<<<< HEAD
 vector 101 Scenario.node[3].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+=======
+vector 82 Scenario.node[3].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode linear
 attr recordingmode vector
 attr source throughput(packetPulled)
 attr title "outgoing datarate"
 attr unit bps
+<<<<<<< HEAD
 vector 102 Scenario.node[3].wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+=======
+vector 83 Scenario.node[3].wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr interpolationmode linear
 attr recordingmode vector
 attr source throughput(packetPushStarted)
 attr title "incoming datarate"
 attr unit bps
+<<<<<<< HEAD
 vector 103 Scenario.node[3].app[0] throughput:vector ETV
+=======
+vector 84 Scenario.node[3].app[0] throughput:vector ETV
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 attr recordingmode vector
 attr source throughput(packetReceived)
 attr title throughput
 attr unit bps
+<<<<<<< HEAD
 60	2970172 162 92416 92416 20.1 21 10 0 12640 12640 159769600
 97	2970334 2464 92416 92416 5.2 21 159 0 0 0 0
 98	2972798 1722 92416 92416 10.2 21 109 0 0 0 0
@@ -736,4 +867,18 @@ attr unit bps
 101	2978073 991 92416 92416 15.2 21 59 0 0 0 0
 102	2979064 991 92416 92416 15.2 21 59 0 0 0 0
 103	2980055 991 92416 92416 15.2 21 59 0 0 0 0
+=======
+50	33540 60 247 247 20.1 20.4 4 0 12640 12640 159769600
+56	33600 59 247 247 20.1 20.4 4 0 8000 8000 64000000
+60	33659 60 247 247 20.1 20.4 4 0 12640 12640 159769600
+75	33719 59 247 247 20.1 20.4 4 0 8000 8000 64000000
+77	33778 2064 247 247 5.2 20.4 153 0 0 0 0
+78	35842 2064 247 247 5.2 20.4 153 0 0 0 0
+79	37906 1422 247 247 10.2 20.4 103 0 0 0 0
+80	39328 1422 247 247 10.2 20.4 103 0 0 0 0
+81	40750 1422 247 247 10.2 20.4 103 0 0 0 0
+82	42172 732 247 247 15.2 20.4 53 0 0 0 0
+83	42904 732 247 247 15.2 20.4 53 0 0 0 0
+84	43636 732 247 247 15.2 20.4 53 0 0 0 0
+>>>>>>> cb40c32b5605b182eb28a7bfd6f1ddcc854b381a
 
